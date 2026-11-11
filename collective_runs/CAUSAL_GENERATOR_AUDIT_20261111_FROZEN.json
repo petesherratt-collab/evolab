@@ -1,0 +1,131 @@
+{
+  "accepted": 225,
+  "attempted": 225,
+  "cell_counts": {
+    "additive:easy": 25,
+    "additive:hard": 25,
+    "additive:moderate": 25,
+    "coordination_trap:easy": 25,
+    "coordination_trap:hard": 25,
+    "coordination_trap:moderate": 25,
+    "relational:easy": 25,
+    "relational:hard": 25,
+    "relational:moderate": 25
+  },
+  "correct_label_counts": {
+    "actuator_stiction": 45,
+    "circulation_loss": 45,
+    "controller_timing_fault": 45,
+    "none_of_the_above": 45,
+    "sensor_bias": 45
+  },
+  "correct_position_counts": {
+    "0": 45,
+    "1": 45,
+    "2": 45,
+    "3": 45,
+    "4": 45
+  },
+  "failures": [],
+  "first_seed": 500,
+  "generator_version": "causal-1.0",
+  "leakage_probes": [
+    {
+      "accuracy": 0.08888888888888889,
+      "baseline_accuracy": 0.2,
+      "feature_set": "metadata_only",
+      "passed": true,
+      "target": "correct_label",
+      "test_cases": 90,
+      "threshold": 0.4,
+      "train_cases": 135
+    },
+    {
+      "accuracy": 0.15555555555555556,
+      "baseline_accuracy": 0.2,
+      "feature_set": "metadata_only",
+      "passed": true,
+      "target": "correct_position",
+      "test_cases": 90,
+      "threshold": 0.4,
+      "train_cases": 135
+    },
+    {
+      "accuracy": 0.2,
+      "baseline_accuracy": 0.2,
+      "feature_set": "text_only",
+      "passed": true,
+      "target": "correct_label",
+      "test_cases": 90,
+      "threshold": 0.4,
+      "train_cases": 135
+    },
+    {
+      "accuracy": 0.2,
+      "baseline_accuracy": 0.2,
+      "feature_set": "text_only",
+      "passed": true,
+      "target": "correct_position",
+      "test_cases": 90,
+      "threshold": 0.4,
+      "train_cases": 135
+    }
+  ],
+  "ledger_head": "c2ee0d394b9646f40c2b698a22c739fec79e20113d73102a90a62e5c84ec85f2",
+  "ledger_records": 227,
+  "metric_ranges": {
+    "cheap_correct_posterior": {
+      "maximum": 1.0,
+      "minimum": 0.16666666666666666
+    },
+    "cheap_distractor_posterior": {
+      "maximum": 0.3333333333333333,
+      "minimum": 0.0
+    },
+    "maximum_pair_synergy": {
+      "maximum": 0.9709505944546686,
+      "minimum": 0.0
+    },
+    "maximum_single_information_gain": {
+      "maximum": 0.9709505944546686,
+      "minimum": 0.0
+    },
+    "minimal_sufficient_sets": {
+      "maximum": 48.0,
+      "minimum": 1.0
+    },
+    "minimum_cost_sufficient_sets": {
+      "maximum": 8.0,
+      "minimum": 1.0
+    },
+    "minimum_sufficient_clues": {
+      "maximum": 6.0,
+      "minimum": 3.0
+    },
+    "minimum_sufficient_cost": {
+      "maximum": 48.0,
+      "minimum": 3.0
+    },
+    "observed_full_posterior": {
+      "maximum": 1.0,
+      "minimum": 1.0
+    },
+    "prior_entropy": {
+      "maximum": 2.321928094887362,
+      "minimum": 2.321928094887362
+    }
+  },
+  "passed": true,
+  "property_checks": {
+    "candidate_renaming_oracle_invariant": true,
+    "candidate_renaming_renderer_invariant": true,
+    "evidence_order_oracle_invariant": true,
+    "evidence_order_renderer_invariant": true,
+    "wording_oracle_invariant": true
+  },
+  "rejected": 0,
+  "rejection_counts": {},
+  "seeds_per_cell": 25,
+  "unique_causal_fingerprints": 225,
+  "unique_public_fingerprints": 225
+}

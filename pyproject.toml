@@ -10,4 +10,4 @@ requires-python = ">=3.11"
 dependencies = []
 
 [tool.setuptools.packages.find]
-include = ["evolutionary_lab*"]
+include = ["evolutionary_lab*", "collective_lab*"]
