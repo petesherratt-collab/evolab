@@ -26,6 +26,7 @@ SOURCE_FILES = (
     "collective_lab/core.py",
     "collective_lab/runner.py",
     "collective_lab/openrouter.py",
+    "collective_lab/cli.py",
     "collective_lab/causal_audit.py",
     "collective_lab/freeze.py",
     "collective_lab/development.py",
@@ -165,6 +166,7 @@ def _common_payload(
             "reasoning_effort": "medium",
             "max_completion_tokens": 1400,
             "max_tool_rounds": 3,
+            "request_timeout_seconds": 300,
             "evidence_budget_per_condition": 100,
             "target_provider_reported_tokens": 25000,
             "compute_tolerance": 0.10,
@@ -324,6 +326,7 @@ def main() -> None:
     parser.add_argument("--development-manifest", type=Path)
     parser.add_argument("--evaluation-manifest", type=Path)
     parser.add_argument("--development-master-seed")
+    parser.add_argument("--reuse-development-manifest", type=Path)
     parser.add_argument("--verify-manifest", type=Path)
     parser.add_argument("--signature", type=Path)
     args = parser.parse_args()
@@ -349,13 +352,19 @@ def main() -> None:
             "creation requires --audit-summary, --private-key, "
             "--development-manifest, and --evaluation-manifest"
         )
+    development_master_seed = args.development_master_seed
+    if args.reuse_development_manifest:
+        previous = json.loads(
+            args.reuse_development_manifest.read_text(encoding="utf-8")
+        )
+        development_master_seed = str(previous["payload"]["master_seed"])
     artifacts = create_freeze_package(
         audit_summary=args.audit_summary,
         private_key=args.private_key,
         public_key=args.public_key,
         development_manifest=args.development_manifest,
         evaluation_manifest=args.evaluation_manifest,
-        development_master_seed=args.development_master_seed,
+        development_master_seed=development_master_seed,
     )
     print(json.dumps({key: str(value) for key, value in asdict(artifacts).items()}, indent=2))
 

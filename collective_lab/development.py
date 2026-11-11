@@ -70,6 +70,8 @@ def run_development_set(
     campaign_ledger: str | Path,
     model: str = "openai/gpt-6.1-sol",
     max_tasks: int | None = None,
+    start_index: int = 0,
+    attempt: int = 0,
 ) -> DevelopmentRunSummary:
     manifest_path = Path(manifest).resolve()
     signature_path = Path(signature).resolve()
@@ -94,7 +96,10 @@ def run_development_set(
         "signing_key_fingerprint": str(verification["signing_key_fingerprint"]),
     }
     tasks = list(payload["tasks"])
-    selected = tasks if max_tasks is None else tasks[:max_tasks]
+    if start_index < 0 or attempt < 0:
+        raise ValueError("DEVELOPMENT_RESUME_ARGUMENT_INVALID")
+    remaining = [task for task in tasks if int(task["task_index"]) >= start_index]
+    selected = remaining if max_tasks is None else remaining[:max_tasks]
     completed_ledgers: list[str] = []
     failures: list[str] = []
     total_cost = 0.0
@@ -106,6 +111,8 @@ def run_development_set(
                 "manifest_reference": manifest_reference,
                 "tasks_declared": len(tasks),
                 "tasks_selected_this_run": len(selected),
+                "start_index": start_index,
+                "attempt": attempt,
             }
         )
         for task_spec in selected:
@@ -116,8 +123,10 @@ def run_development_set(
             case = generate_causal_case(seed, task_class, difficulty)
             if case.causal_task.fingerprint() != task_spec["causal_fingerprint"]:
                 raise ValueError(f"DEVELOPMENT_TASK_FINGERPRINT_INVALID: {index}")
+            attempt_suffix = f"-attempt-{attempt}" if attempt else ""
             task_path = output_dir / (
-                f"task-{index:02d}-{task_class}-{difficulty}-{seed}.jsonl"
+                f"task-{index:02d}-{task_class}-{difficulty}-{seed}"
+                f"{attempt_suffix}.jsonl"
             )
             if task_path.exists():
                 try:
@@ -168,6 +177,9 @@ def run_development_set(
                     target_tokens=int(payload["harness"]["target_provider_reported_tokens"]),
                     compute_tolerance=float(payload["harness"]["compute_tolerance"]),
                     manifest_reference=manifest_reference,
+                    request_timeout_seconds=int(
+                        payload["harness"]["request_timeout_seconds"]
+                    ),
                 )
             except Exception as exc:
                 reason = f"{type(exc).__name__}: {exc}"
@@ -216,6 +228,8 @@ def main() -> None:
     parser.add_argument("--campaign-ledger", type=Path, required=True)
     parser.add_argument("--model", default="openai/gpt-6.1-sol")
     parser.add_argument("--max-tasks", type=int)
+    parser.add_argument("--start-index", type=int, default=0)
+    parser.add_argument("--attempt", type=int, default=0)
     args = parser.parse_args()
     summary = run_development_set(
         manifest=args.manifest,
@@ -225,6 +239,8 @@ def main() -> None:
         campaign_ledger=args.campaign_ledger,
         model=args.model,
         max_tasks=args.max_tasks,
+        start_index=args.start_index,
+        attempt=args.attempt,
     )
     print(json.dumps(summary.mapping(), indent=2, sort_keys=True))
 

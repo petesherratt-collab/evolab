@@ -692,6 +692,7 @@ def run_engineering_task(
     target_tokens: int = 25_000,
     compute_tolerance: float = 0.10,
     manifest_reference: dict[str, str] | None = None,
+    request_timeout_seconds: int = 300,
 ) -> list[ConditionResult]:
     if output.exists():
         raise FileExistsError(f"OUTPUT_ALREADY_EXISTS: {output}")
@@ -706,6 +707,7 @@ def run_engineering_task(
         "target_tokens": target_tokens,
         "compute_tolerance": compute_tolerance,
         "manifest_reference": manifest_reference,
+        "request_timeout_seconds": request_timeout_seconds,
     }
     config_hash = hashlib.sha256(json.dumps(config, sort_keys=True).encode("utf-8")).hexdigest()
     results: list[ConditionResult] = []
@@ -721,7 +723,7 @@ def run_engineering_task(
             }
         )
         harness = Harness(
-            OpenRouterClient(model=model),
+            OpenRouterClient(model=model, timeout_seconds=request_timeout_seconds),
             ledger,
             max_tokens=max_tokens,
             max_tool_rounds=max_tool_rounds,

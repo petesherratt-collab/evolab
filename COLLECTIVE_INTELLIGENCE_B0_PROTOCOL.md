@@ -401,3 +401,9 @@ On 2026-11-11, the expanded offline audit and public-view leakage gates passed. 
 The sealed development split contains one easy, one moderate, and one hard task from each causal class. Its nine seeds are derived from a development master seed committed inside the signed development manifest. These tasks are authorized only for protocol and compute calibration and are permanently excluded from evaluation.
 
 The evaluation configuration manifest freezes the planned thirty-task distribution and harness configuration but contains no evaluation seed, seed commitment, hidden world, or task fingerprint. Its status remains `frozen_but_not_authorized_seed_not_generated`. Creating or signing that configuration does not authorize the exploratory evaluation. Evaluation seed generation, commitment, and execution require a later explicit authorization after the development run is reviewed.
+
+### Development infrastructure amendment 0.1-F
+
+The first sealed development campaign completed the three additive tasks and three conditions of the relational-easy task before an OpenRouter response exceeded the 180-second HTTP read timeout. The failed task ledger and all incurred cost remain preserved. This was an infrastructure timeout, not a malformed report or an agent mistake.
+
+Prospectively, sealed development requests use a 300-second read timeout. Infrastructure retries use a new attempt number and output ledger, retain the original failed attempt, and are identified in the campaign ledger. Explicit start-index and attempt controls may resume the signed development task list without changing its master seed, task seeds, causal fingerprints, or public fingerprints. This amendment applies only to development; it does not authorize evaluation or silent scientific-trial reruns.

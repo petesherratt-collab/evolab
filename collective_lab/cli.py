@@ -24,6 +24,7 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=20261101)
     parser.add_argument("--target-tokens", type=int, default=25_000)
     parser.add_argument("--compute-tolerance", type=float, default=0.10)
+    parser.add_argument("--request-timeout-seconds", type=int, default=300)
     parser.add_argument(
         "--condition",
         action="append",
@@ -57,6 +58,7 @@ def main() -> None:
         seed=args.seed,
         target_tokens=args.target_tokens,
         compute_tolerance=args.compute_tolerance,
+        request_timeout_seconds=args.request_timeout_seconds,
     )
     print(json.dumps([result.mapping() for result in results], indent=2, sort_keys=True))
 

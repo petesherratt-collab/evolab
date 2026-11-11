@@ -74,6 +74,14 @@ class CollectiveLabTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertNotEqual(first, evaluation)
 
+    def test_openrouter_default_timeout_covers_slow_provider_response(self) -> None:
+        from collective_lab.openrouter import OpenRouterClient
+
+        client = OpenRouterClient(api_key="test-key")
+        self.assertEqual(client.timeout_seconds, 180)
+        extended = OpenRouterClient(api_key="test-key", timeout_seconds=300)
+        self.assertEqual(extended.timeout_seconds, 300)
+
     def test_causal_candidate_rename_rejects_colliding_targets(self) -> None:
         task = generate_causal_case(500, "additive", "easy").causal_task
         mapping = {candidate: task.candidates[0] for candidate in task.candidates}
