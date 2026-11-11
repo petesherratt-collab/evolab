@@ -1,0 +1,177 @@
+{
+  "payload": {
+    "audit": {
+      "accepted": 225,
+      "attempted": 225,
+      "ledger_head": "c2ee0d394b9646f40c2b698a22c739fec79e20113d73102a90a62e5c84ec85f2",
+      "rejected": 0,
+      "summary_path": "collective_runs/CAUSAL_GENERATOR_AUDIT_20261111_FROZEN.json",
+      "summary_sha256": "30d47f545329844d9869cb5a0471a1e25a1cc492587b3853dd52b49f655fd61a"
+    },
+    "conditions": [
+      "single_agent",
+      "independent_vote",
+      "independent_synthesizer",
+      "communicating_collective"
+    ],
+    "difficulties": [
+      "easy",
+      "moderate",
+      "hard"
+    ],
+    "difficulty_minimum_sufficient_costs": {
+      "additive": {
+        "easy": 3,
+        "hard": 24,
+        "moderate": 9
+      },
+      "coordination_trap": {
+        "easy": 4,
+        "hard": 17,
+        "moderate": 12
+      },
+      "relational": {
+        "easy": 6,
+        "hard": 48,
+        "moderate": 18
+      }
+    },
+    "generator_version": "causal-1.0",
+    "harness": {
+      "compute_tolerance": 0.1,
+      "conditions": [
+        "single_agent",
+        "independent_vote",
+        "independent_synthesizer",
+        "communicating_collective"
+      ],
+      "evidence_budget_per_condition": 100,
+      "integrity_adjusted_failure_loss": 2.0,
+      "max_completion_tokens": 1400,
+      "max_tool_rounds": 3,
+      "model": "openai/gpt-6.1-sol",
+      "primary_metric": "five_class_brier_loss",
+      "reasoning_effort": "medium",
+      "target_provider_reported_tokens": 25000
+    },
+    "leakage_probe": {
+      "feature_sets": [
+        "metadata_only",
+        "text_only"
+      ],
+      "held_out_threshold": 0.4,
+      "split_rule": "seed-disjoint balanced Latin diagonals 0 and 2",
+      "targets": [
+        "correct_label",
+        "correct_position"
+      ]
+    },
+    "manifest_type": "development",
+    "master_seed": "f2eaa4ffa3048fe0405980c0b0cdb109c2d8e21f7d139b17ed64dbe6070dda11",
+    "schema": "collective-intelligence-freeze-v1",
+    "scientific_use": "protocol_calibration_only_never_evaluation",
+    "seed_derivation": "uint64_be(SHA256(generator_version|split|task_class|difficulty|task_index|master_seed)[0:8])",
+    "signing": {
+      "algorithm": "Ed25519",
+      "public_key_der_sha256": "4fb6947ba7bbc76dac9b2b0687878e8b3be971b24586007562c2cfef002eaa4b",
+      "public_key_path": "collective_runs/collective-freeze-ed25519-public.pem",
+      "public_key_sha256": "feaff55bcad52df45db44af2efef2f424712fad1a1877d798f195a85027a345d"
+    },
+    "source_sha256": {
+      "COLLECTIVE_INTELLIGENCE_B0_PROTOCOL.md": "72351d056e5aec27a3470a2326f45ee01610d9efb4956960a4420dc8fccac6c8",
+      "collective_lab/causal.py": "e377d547adac956ec667ace78ecdb037b0815c22d876206510e6e0bb270bc161",
+      "collective_lab/causal_audit.py": "3352ade7a9dd5c846670ca3a0da63e5e30fa6b8b34b380b8af63acdc769490c9",
+      "collective_lab/causal_generator.py": "dd7d2f85c0996ff1973b65c1c391c169dd5858114c044a3d25db00667c142c79",
+      "collective_lab/core.py": "533c89098ab856a844069e80cc0a903e34faa01dcfea3ded99024b5d50e3c558",
+      "collective_lab/development.py": "541ce43663d5ea6dcc38ec36d6d5dfec4b35138d8a1f2dc3decee43776622642",
+      "collective_lab/freeze.py": "a25fb7c60024941b3c45759c12b75ccb0828c21089af6c6de9c53ddf8518c4ae",
+      "collective_lab/openrouter.py": "df242811d8101bc57a84a9c796d5ff48412df71f71b3e649f95f2ff6c9f23601",
+      "collective_lab/oracle.py": "291c320a67896601a3a1e67d73d03125c1aa368f0e4cee7190d906253823e6cf",
+      "collective_lab/runner.py": "b01fa9cebbbd41d56483af8b7a3e6ad197e1e4975a24e70de02e9ab2501ddda2",
+      "pyproject.toml": "1a10fbc4347e2bf339497b5d7e2f4e7771bf9809ac0071de408d2c6279fefedf",
+      "tests/test_collective_lab.py": "c63a9046be86a603eed49a29bc6f6e658c4c72cd026514e736c488caa1996d27"
+    },
+    "status": "sealed_development_authorized",
+    "task_classes": [
+      "additive",
+      "relational",
+      "coordination_trap"
+    ],
+    "task_count": 9,
+    "tasks": [
+      {
+        "causal_fingerprint": "1ba75d9fe50b61381e4375591e9b88810d1edaab0c357688b5e03ae52e446641",
+        "difficulty": "easy",
+        "public_fingerprint": "4125bcff4fe45fb54d5e19366b7a814a7640e8938e4c8ef0d19909f871f6a3ba",
+        "seed": 6960334179576153956,
+        "task_class": "additive",
+        "task_index": 0
+      },
+      {
+        "causal_fingerprint": "65602ede33f4f10b33504eac921d106062c5a9d28d729196338df4450fe78332",
+        "difficulty": "moderate",
+        "public_fingerprint": "1169af9a677415bb75bc21d2cd1df21ad7d5a257c0be81101d70ceffa6b24821",
+        "seed": 1401447321224618852,
+        "task_class": "additive",
+        "task_index": 1
+      },
+      {
+        "causal_fingerprint": "5334e0cdcaf7e728e0e6d92fe31440b1adc412fbb893c8475d7f4bdb268303ed",
+        "difficulty": "hard",
+        "public_fingerprint": "053405928092e38a66e9e677bcb1c5cc9fd1f56d0e10d1e31eaa97276134d2b7",
+        "seed": 7548226002443246223,
+        "task_class": "additive",
+        "task_index": 2
+      },
+      {
+        "causal_fingerprint": "2da813b8a943750fc86583f08e8df365748c3e709b3273f7c9973c317084b2ff",
+        "difficulty": "easy",
+        "public_fingerprint": "923a76c24aaa80f743e013d34fd282f29f104ae0f363f7d2f512c6d74c73bdd5",
+        "seed": 15899353898022134892,
+        "task_class": "relational",
+        "task_index": 3
+      },
+      {
+        "causal_fingerprint": "885d1f6846df46bfd5e82072577914dba227b5cba0c1b8693471c5e3a7b805b5",
+        "difficulty": "moderate",
+        "public_fingerprint": "f2d386486dc9cd768c1134783ecbf990335e47f1580eb93b7e4ef9aa36af6734",
+        "seed": 6296246524450145881,
+        "task_class": "relational",
+        "task_index": 4
+      },
+      {
+        "causal_fingerprint": "8dec07e53e5dad02c64ab54b3fb06ed65658d1ce55e0d6e7666686cd83825e40",
+        "difficulty": "hard",
+        "public_fingerprint": "bd33883820493e3d41c1f22d03ca90c333aef8a12b37a99d95e94fdd0b8e5dee",
+        "seed": 3019886420956520846,
+        "task_class": "relational",
+        "task_index": 5
+      },
+      {
+        "causal_fingerprint": "a8a19ed2768b8fd5fa35b2a17f71b81ae507c99e64b64065cf6ec2922f8d2be5",
+        "difficulty": "easy",
+        "public_fingerprint": "67c3211df4a62cece4ffdb1936c1e9dcf9daa053fb5f41ad1a842b127ea020c0",
+        "seed": 11451802202086287829,
+        "task_class": "coordination_trap",
+        "task_index": 6
+      },
+      {
+        "causal_fingerprint": "5dfd4c5d4da2c87ceea74e732832bb133848310dc7dd442a5534888ea9688560",
+        "difficulty": "moderate",
+        "public_fingerprint": "e699c991a74b3e39fc8281974f16378c06245a28616a9292669a1997c125a088",
+        "seed": 9208259521790876,
+        "task_class": "coordination_trap",
+        "task_index": 7
+      },
+      {
+        "causal_fingerprint": "1a6dd9384dd1b0611eb8040eb68816b076906a18b81982a3f093369eb477f775",
+        "difficulty": "hard",
+        "public_fingerprint": "58a461790319f97c67dd2a6f252f2faae6044dd43cfd12d8a62df8079f66f5a2",
+        "seed": 14534482467647437022,
+        "task_class": "coordination_trap",
+        "task_index": 8
+      }
+    ]
+  },
+  "payload_sha256": "2b161351462956dc5e877ace6ef8120ded8d384cb93afc8f5a81dd5dd39704d3"
+}
