@@ -42,11 +42,11 @@ Each condition receives one total task budget. The budget equals the exact minim
 
 | Task class | Easy | Moderate | Hard |
 |---|---:|---:|---:|
-| Additive | 5 | 12 | 28 |
-| Relational | 8 | 21 | 52 |
-| Coordination trap | 6 | 15 | 21 |
+| Additive | 5 | 12 | 29 |
+| Relational | 8 | 21 | 53 |
+| Coordination trap | 6 | 15 | 22 |
 
-The original minimum sufficient costs remain `3/9/24`, `6/18/48`, and `4/12/17` respectively. The budget therefore permits one decisive route plus limited verification, not broad catalogue purchase.
+Easy and moderate minimum sufficient costs remain `3/9`, `6/18`, and `4/12`. Hard tasks add a one-unit router to the guaranteed acquisition path, producing routed path costs of `25`, `49`, and `18`. On some realized relational worlds, a lucky un-routed probe can still yield a hindsight minimum of `48`; the prospective resource budget correctly uses the guaranteed routed cost of `49`. The budget therefore permits one adaptive decisive route plus four units of verification, not broad catalogue purchase.
 
 Budget conservation across conditions is prospective and mechanical:
 
@@ -56,6 +56,17 @@ Budget conservation across conditions is prospective and mechanical:
 - communicating collective: the same path-feasible investigator/synthesis allocation as independent synthesis.
 
 Packing ties and reserve units rotate deterministically from the task identifier so the same investigator role is not consistently favoured. This price-aware rule prevents an equal numerical split from making every 8-unit hard clue unaffordable while still conserving the exact condition-level total.
+
+## Adaptive hard-task routing
+
+Every hard task contains an independent binary branch, a one-unit routing check, and two expensive branch probes. One probe is informative in branch A and the other in branch B. The remaining minimum-path evidence forms the baseline before this decision.
+
+The exact adaptive diagnostic compares:
+
+- a routed policy that observes the router and then buys the best branch probe; and
+- the best fixed policy forced to choose one branch probe before seeing the router.
+
+A hard task passes only when both router outcomes have positive mass, the optimal follow-up differs between outcomes, and the routed policy reduces conditional fault entropy by at least `0.01` bits. Across the full audit, every hard task produced an adaptive gain of `0.165977` bits.
 
 ## Compute plan
 
@@ -83,23 +94,32 @@ The development audit covered 25 seeds in every class/difficulty cell, 225 tasks
 - metadata and text leakage probes: 4/4 passed;
 - candidate-renaming, evidence-order, wording, posterior-order, and scarcity invariants: all passed;
 - audit ledger records: 227;
-- audit ledger head: `91e3b0afbcfb43dcd719e8450dcefb551e1c7288531d1dac22dd92692c21aa6d`.
+- hard adaptive-choice checks: 75/75 passed;
+- adaptive gain range: `0.165977–0.165977` bits;
+- audit ledger head: `a04906c3a5dccdcb9156770afd75388358f1f00204d6f71d30658fe955a94e10`.
 
 The audit artifacts are:
 
-- `collective_runs/CAUSAL_V11_AUDIT_20261111_DEV.json`
-- `collective_runs/causal-v11-audit-20261111-dev.jsonl`
+- `collective_runs/CAUSAL_V11_ADAPTIVE_AUDIT_20261112_DEV.json`
+- `collective_runs/causal-v11-adaptive-audit-20261112-dev.jsonl`
 
 ## Remaining gates
 
+The manifest-driven `HarnessV11` campaign wrapper is implemented. It verifies task fingerprints, public fingerprints, evidence budgets, path prices, signatures, and frozen source hashes before any model call. A prepared manifest is deliberately rejected until a separately signed authorization artifact changes its status.
+
+The prepared seal artifacts are:
+
+- `collective_runs/FROZEN_DEVELOPMENT_MANIFEST_CAUSAL_1_1_PREPARED.json`
+- `collective_runs/FROZEN_EVALUATION_CONFIGURATION_CAUSAL_1_1_PREPARED.json`
+
+Both have detached Ed25519 signatures. The development seal contains nine fresh development seeds but has status `sealed_development_prepared_not_execution_authorized`. The evaluation configuration contains no seed, commitment, hidden world, or task fingerprint.
+
 `causal-1.1-dev` is not ready for the thirty-task evaluation. Before any evaluation seed is generated:
 
-1. wrap the implemented `HarnessV11` condition runner in a sealed development-campaign runner and include its complete allocation plan in the signed manifest;
-2. add explicit adaptive branch-choice diagnostics for hard tasks, beyond minimum-cost and path-count checks;
-3. seal a fresh nine-task development split under a signed manifest;
-4. run that split only after separate model-spend authorization;
-5. require all nine tasks to pass compute matching and require non-ceiling single-agent loss;
-6. review whether communication materially improves over both the single agent and independent synthesizer;
-7. assign a frozen release identifier only after those development gates pass.
+1. create a separate signed authorization artifact only after explicit model-spend approval;
+2. run the prepared nine-task development split under that authorization;
+3. require all nine tasks to pass compute matching and require non-ceiling single-agent loss;
+4. review whether communication materially improves over both the single agent and independent synthesizer;
+5. assign a frozen release identifier only after those development gates pass.
 
 The evaluation configuration remains unauthorized. No evaluation master seed, seed commitment, hidden world, or task fingerprint may be created during this development phase.

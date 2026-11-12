@@ -7,12 +7,14 @@ import unittest
 
 from evolutionary_lab.evidence import EvidenceLedger, verify_ledger
 
+from collective_lab.adaptive_v11 import adaptive_choice_metrics
 from collective_lab.causal_generator import CAUSAL_TASK_CLASSES, DIFFICULTIES
 from collective_lab.causal_generator_v11 import (
     CAUSAL_GENERATOR_V11_VERSION,
     faithful_regime_probability,
     generate_causal_case_v11,
 )
+from collective_lab.freeze_v11 import derive_v11_task_seed
 from collective_lab.oracle import ExactOracle
 from collective_lab.openrouter import Completion
 from collective_lab.protocol_v11 import (
@@ -25,14 +27,14 @@ from collective_lab.runner_v11 import HarnessV11, v11_condition_plan
 
 
 EXPECTED_COSTS = {
-    "additive": {"easy": 3, "moderate": 9, "hard": 24},
-    "relational": {"easy": 6, "moderate": 18, "hard": 48},
-    "coordination_trap": {"easy": 4, "moderate": 12, "hard": 17},
+    "additive": {"easy": 3, "moderate": 9, "hard": 25},
+    "relational": {"easy": 6, "moderate": 18, "hard": 49},
+    "coordination_trap": {"easy": 4, "moderate": 12, "hard": 18},
 }
 EXPECTED_BUDGETS = {
-    "additive": {"easy": 5, "moderate": 12, "hard": 28},
-    "relational": {"easy": 8, "moderate": 21, "hard": 52},
-    "coordination_trap": {"easy": 6, "moderate": 15, "hard": 21},
+    "additive": {"easy": 5, "moderate": 12, "hard": 29},
+    "relational": {"easy": 8, "moderate": 21, "hard": 53},
+    "coordination_trap": {"easy": 6, "moderate": 15, "hard": 22},
 }
 
 
@@ -165,6 +167,21 @@ class CausalGeneratorV11Tests(unittest.TestCase):
                     )
                 )
 
+    def test_hard_tasks_require_adaptive_branch_choice(self) -> None:
+        for task_class in CAUSAL_TASK_CLASSES:
+            case = self.cases[(task_class, "hard")]
+            with self.subTest(task_class=task_class):
+                self.assertIsNotNone(case.adaptive_branch)
+                metrics = adaptive_choice_metrics(
+                    case.causal_task, case.adaptive_branch
+                )
+                self.assertTrue(metrics.passed, metrics.mapping())
+                self.assertGreaterEqual(metrics.adaptive_gain_bits, 0.01)
+                self.assertEqual(len(set(dict(metrics.selected_followups).values())), 2)
+        for task_class in CAUSAL_TASK_CLASSES:
+            self.assertIsNone(self.cases[(task_class, "easy")].adaptive_branch)
+            self.assertIsNone(self.cases[(task_class, "moderate")].adaptive_branch)
+
     def test_generation_is_deterministic_and_versioned(self) -> None:
         first = generate_causal_case_v11(812, "coordination_trap", "hard")
         second = generate_causal_case_v11(812, "coordination_trap", "hard")
@@ -172,9 +189,34 @@ class CausalGeneratorV11Tests(unittest.TestCase):
         self.assertEqual(first.causal_task.generator_version, CAUSAL_GENERATOR_V11_VERSION)
         self.assertTrue(first.causal_task.task_id.startswith("causal-v11-"))
 
+    def test_v11_seed_derivation_is_split_specific(self) -> None:
+        development = derive_v11_task_seed(
+            "master",
+            split="development",
+            task_class="additive",
+            difficulty="easy",
+            task_index=0,
+        )
+        repeated = derive_v11_task_seed(
+            "master",
+            split="development",
+            task_class="additive",
+            difficulty="easy",
+            task_index=0,
+        )
+        evaluation = derive_v11_task_seed(
+            "master",
+            split="evaluation",
+            task_class="additive",
+            difficulty="easy",
+            task_index=0,
+        )
+        self.assertEqual(development, repeated)
+        self.assertNotEqual(development, evaluation)
+
     def test_evidence_allocation_conserves_every_condition_budget(self) -> None:
         task_id = "causal-v11-relational-hard-812"
-        path_costs = (8, 8, 8, 8, 8, 8)
+        path_costs = (8, 8, 8, 8, 8, 1, 8)
         for condition in (
             "single_agent",
             "independent_vote",
@@ -184,31 +226,31 @@ class CausalGeneratorV11Tests(unittest.TestCase):
             with self.subTest(condition=condition):
                 allocation = evidence_allocation(
                     condition,
-                    52,
+                    53,
                     task_id=task_id,
                     minimum_path_costs=path_costs,
                 )
                 self.assertEqual(
                     sum(allocation.investigator_budgets)
                     + allocation.synthesis_budget,
-                    52,
+                    53,
                 )
         single = evidence_allocation(
-            "single_agent", 52, task_id=task_id, minimum_path_costs=path_costs
+            "single_agent", 53, task_id=task_id, minimum_path_costs=path_costs
         )
         vote = evidence_allocation(
-            "independent_vote", 52, task_id=task_id, minimum_path_costs=path_costs
+            "independent_vote", 53, task_id=task_id, minimum_path_costs=path_costs
         )
         collective = evidence_allocation(
             "communicating_collective",
-            52,
+            53,
             task_id=task_id,
             minimum_path_costs=path_costs,
         )
-        self.assertEqual(single.investigator_budgets, (52,))
+        self.assertEqual(single.investigator_budgets, (53,))
         self.assertEqual(len(vote.investigator_budgets), 4)
-        self.assertEqual(sorted(vote.investigator_budgets), [9, 9, 17, 17])
-        self.assertEqual(sorted(collective.investigator_budgets), [8, 8, 8, 16])
+        self.assertEqual(sorted(vote.investigator_budgets), [9, 10, 17, 17])
+        self.assertEqual(sorted(collective.investigator_budgets), [8, 8, 9, 16])
         self.assertEqual(collective.synthesis_budget, 12)
 
     def test_budget_remainder_rotation_is_deterministic(self) -> None:

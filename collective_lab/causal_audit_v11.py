@@ -10,6 +10,7 @@ from typing import Iterable, Mapping, Sequence
 
 from evolutionary_lab.evidence import verify_ledger
 
+from .adaptive_v11 import adaptive_choice_metrics
 from .causal import CausalTask
 from .causal_audit import (
     LeakageProbe,
@@ -35,10 +36,15 @@ _EXPECTED_COSTS = {
     "relational": {"easy": 6, "moderate": 18, "hard": 48},
     "coordination_trap": {"easy": 4, "moderate": 12, "hard": 17},
 }
+_EXPECTED_PATH_COSTS = {
+    "additive": {"easy": 3, "moderate": 9, "hard": 25},
+    "relational": {"easy": 6, "moderate": 18, "hard": 49},
+    "coordination_trap": {"easy": 4, "moderate": 12, "hard": 18},
+}
 _EXPECTED_BUDGETS = {
-    "additive": {"easy": 5, "moderate": 12, "hard": 28},
-    "relational": {"easy": 8, "moderate": 21, "hard": 52},
-    "coordination_trap": {"easy": 6, "moderate": 15, "hard": 21},
+    "additive": {"easy": 5, "moderate": 12, "hard": 29},
+    "relational": {"easy": 8, "moderate": 21, "hard": 53},
+    "coordination_trap": {"easy": 6, "moderate": 15, "hard": 22},
 }
 
 
@@ -95,6 +101,7 @@ def causal_v11_property_checks(first_seed: int) -> dict[str, bool]:
         "wording_oracle_invariant": True,
         "posterior_ceiling_ordered": True,
         "scarce_budget_above_sufficient_cost": True,
+        "hard_adaptive_choice_gate": True,
     }
     abstract_labels = tuple(f"candidate_{index}" for index in range(5))
     for task_class in CAUSAL_TASK_CLASSES:
@@ -132,6 +139,13 @@ def causal_v11_property_checks(first_seed: int) -> dict[str, bool]:
                 case.metrics.minimum_sufficient_cost < case.evidence_budget
                 < sum(item.cost for item in task.evidence)
             )
+            if difficulty == "hard":
+                checks["hard_adaptive_choice_gate"] &= bool(
+                    case.adaptive_branch
+                    and adaptive_choice_metrics(
+                        case.causal_task, case.adaptive_branch
+                    ).passed
+                )
         checks["posterior_ceiling_ordered"] &= ceilings[0] > ceilings[1] > ceilings[2]
     return checks
 
@@ -152,6 +166,11 @@ def _audit_one(arguments: tuple[int, str, str]) -> dict[str, object]:
 
     task = case.causal_task
     public = case.task.public()
+    adaptive = (
+        adaptive_choice_metrics(task, case.adaptive_branch)
+        if case.adaptive_branch
+        else None
+    )
     return {
         **identity,
         "accepted": True,
@@ -164,6 +183,9 @@ def _audit_one(arguments: tuple[int, str, str]) -> dict[str, object]:
         "evidence_budget": case.evidence_budget,
         "sufficiency_threshold": case.sufficiency_threshold,
         "faithful_regime_probability": case.faithful_regime_probability,
+        "planned_path_cost": sum(case.minimum_path_costs),
+        "adaptive_metrics": adaptive.mapping() if adaptive else None,
+        "adaptive_gain_bits": adaptive.adaptive_gain_bits if adaptive else None,
         "metadata_tokens": _metadata_tokens(public),
         "text_tokens": _text_tokens(public),
         "metadata_probe_fingerprint": _canonical_hash(_metadata_tokens(public)),
@@ -238,8 +260,14 @@ def audit_causal_generator_v11(
         task_class = str(record["task_class"])
         difficulty = str(record["difficulty"])
         metrics = dict(record["metrics"])
-        if int(metrics["minimum_sufficient_cost"]) != _EXPECTED_COSTS[task_class][difficulty]:
+        actual_cost = int(metrics["minimum_sufficient_cost"])
+        allowed_costs = {_EXPECTED_COSTS[task_class][difficulty]}
+        if difficulty == "hard":
+            allowed_costs.add(_EXPECTED_PATH_COSTS[task_class][difficulty])
+        if actual_cost not in allowed_costs:
             failures.append(f"CAUSAL_V11_COST_BAND_INVALID:{cell}:{record['seed']}")
+        if int(record["planned_path_cost"]) != _EXPECTED_PATH_COSTS[task_class][difficulty]:
+            failures.append(f"CAUSAL_V11_PATH_COST_INVALID:{cell}:{record['seed']}")
         if int(record["evidence_budget"]) != _EXPECTED_BUDGETS[task_class][difficulty]:
             failures.append(f"CAUSAL_V11_BUDGET_INVALID:{cell}:{record['seed']}")
         if abs(
@@ -247,6 +275,11 @@ def audit_causal_generator_v11(
             - faithful_regime_probability(difficulty)
         ) > 1e-12:
             failures.append(f"CAUSAL_V11_POSTERIOR_INVALID:{cell}:{record['seed']}")
+        adaptive = record.get("adaptive_metrics")
+        if difficulty == "hard" and not (isinstance(adaptive, dict) and adaptive.get("passed")):
+            failures.append(f"CAUSAL_V11_ADAPTIVE_GATE_INVALID:{cell}:{record['seed']}")
+        if difficulty != "hard" and adaptive is not None:
+            failures.append(f"CAUSAL_V11_ADAPTIVE_GATE_UNEXPECTED:{cell}:{record['seed']}")
 
     attempted = len(arguments)
     if len(accepted) != attempted:
@@ -328,7 +361,13 @@ def audit_causal_generator_v11(
         metric_ranges=_ranges(records, metric_keys, nested="metrics"),
         operating_ranges=_ranges(
             records,
-            ("evidence_budget", "sufficiency_threshold", "faithful_regime_probability"),
+            (
+                "evidence_budget",
+                "planned_path_cost",
+                "sufficiency_threshold",
+                "faithful_regime_probability",
+                "adaptive_gain_bits",
+            ),
         ),
         leakage_probes=probes,
         property_checks=property_checks,
