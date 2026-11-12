@@ -51,11 +51,11 @@ The original minimum sufficient costs remain `3/9/24`, `6/18/48`, and `4/12/17` 
 Budget conservation across conditions is prospective and mechanical:
 
 - single agent: the complete condition budget;
-- independent vote: the complete budget split across four isolated investigators;
-- independent synthesizer: 80% split across investigators and up to 20% reserved for synthesis;
-- communicating collective: the same investigator/synthesis split as independent synthesis.
+- independent vote: minimum-path clue prices are greedily packed across four isolated investigators, then the verification reserve is distributed;
+- independent synthesizer: one minimum-path clue price plus the verification reserve is assigned to synthesis, while the remaining path prices are packed across investigators;
+- communicating collective: the same path-feasible investigator/synthesis allocation as independent synthesis.
 
-Integer remainders rotate deterministically from the task identifier so the same investigator role is not consistently favoured.
+Packing ties and reserve units rotate deterministically from the task identifier so the same investigator role is not consistently favoured. This price-aware rule prevents an equal numerical split from making every 8-unit hard clue unaffordable while still conserving the exact condition-level total.
 
 ## Compute plan
 
@@ -94,7 +94,7 @@ The audit artifacts are:
 
 `causal-1.1-dev` is not ready for the thirty-task evaluation. Before any evaluation seed is generated:
 
-1. integrate the prospective evidence allocation and revision limit into a separate development runner;
+1. wrap the implemented `HarnessV11` condition runner in a sealed development-campaign runner and include its complete allocation plan in the signed manifest;
 2. add explicit adaptive branch-choice diagnostics for hard tasks, beyond minimum-cost and path-count checks;
 3. seal a fresh nine-task development split under a signed manifest;
 4. run that split only after separate model-spend authorization;

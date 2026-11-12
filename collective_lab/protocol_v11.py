@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 import hashlib
-import math
 
 
 V11_CONDITIONS = (
@@ -40,6 +39,7 @@ class ComputePlan:
     tolerance: float = 0.10
     collective_revision_limit: int = 2
     estimated_revision_tokens: int = 1_800
+    estimated_private_review_tokens: int = 3_000
     synthesis_reserve_tokens: int = 5_000
 
     @property
@@ -58,6 +58,9 @@ class ComputePlan:
             <= self.upper_bound
         )
 
+    def permits_private_review(self, used_tokens: float) -> bool:
+        return used_tokens + self.estimated_private_review_tokens <= self.upper_bound
+
     def mapping(self) -> dict[str, object]:
         return {
             **asdict(self),
@@ -66,13 +69,29 @@ class ComputePlan:
         }
 
 
-def _split_budget(total: int, parts: int, *, rotation: int = 0) -> tuple[int, ...]:
-    if total < 0 or parts <= 0:
-        raise ValueError("CAUSAL_V11_BUDGET_SPLIT_INVALID")
-    quotient, remainder = divmod(total, parts)
-    values = [quotient] * parts
-    for offset in range(remainder):
-        values[(rotation + offset) % parts] += 1
+def _pack_costs(
+    costs: tuple[int, ...], parts: int, *, rotation: int
+) -> tuple[int, ...]:
+    """Greedily pack indivisible clue prices into rotated investigator bins."""
+
+    if parts <= 0 or any(cost <= 0 for cost in costs):
+        raise ValueError("CAUSAL_V11_PATH_COSTS_INVALID")
+    values = [0] * parts
+    rotated = tuple((rotation + offset) % parts for offset in range(parts))
+    for cost in sorted(costs, reverse=True):
+        target = min(rotated, key=lambda index: (values[index], rotated.index(index)))
+        values[target] += cost
+    return tuple(values)
+
+
+def _add_reserve(
+    budgets: tuple[int, ...], reserve: int, *, rotation: int
+) -> tuple[int, ...]:
+    if reserve < 0:
+        raise ValueError("CAUSAL_V11_VERIFICATION_RESERVE_INVALID")
+    values = list(budgets)
+    for offset in range(reserve):
+        values[(rotation + offset) % len(values)] += 1
     return tuple(values)
 
 
@@ -82,30 +101,44 @@ def _task_rotation(task_id: str, parts: int) -> int:
 
 
 def evidence_allocation(
-    condition: str, total_budget: int, *, task_id: str
+    condition: str,
+    total_budget: int,
+    *,
+    task_id: str,
+    minimum_path_costs: tuple[int, ...],
 ) -> EvidenceAllocation:
     if condition not in V11_CONDITIONS:
         raise ValueError(f"CAUSAL_V11_CONDITION_UNKNOWN: {condition}")
     if total_budget <= 0:
         raise ValueError("CAUSAL_V11_TOTAL_BUDGET_INVALID")
+    minimum_path_cost = sum(minimum_path_costs)
+    if not minimum_path_costs or minimum_path_cost > total_budget:
+        raise ValueError("CAUSAL_V11_MINIMUM_PATH_UNAFFORDABLE")
+    reserve = total_budget - minimum_path_cost
     if condition == "single_agent":
         return EvidenceAllocation(condition, total_budget, (total_budget,), 0)
 
     rotation = _task_rotation(task_id, 4)
     if condition == "independent_vote":
+        path_budgets = _pack_costs(minimum_path_costs, 4, rotation=rotation)
         return EvidenceAllocation(
             condition,
             total_budget,
-            _split_budget(total_budget, 4, rotation=rotation),
+            _add_reserve(path_budgets, reserve, rotation=rotation),
             0,
         )
 
-    synthesis_budget = max(1, min(8, math.floor(total_budget * 0.20)))
-    investigator_total = total_budget - synthesis_budget
+    synthesis_path_cost = max(minimum_path_costs)
+    remaining_path = list(minimum_path_costs)
+    remaining_path.remove(synthesis_path_cost)
+    investigator_budgets = _pack_costs(
+        tuple(remaining_path), 4, rotation=rotation
+    )
+    synthesis_budget = synthesis_path_cost + reserve
     return EvidenceAllocation(
         condition,
         total_budget,
-        _split_budget(investigator_total, 4, rotation=rotation),
+        investigator_budgets,
         synthesis_budget,
     )
 

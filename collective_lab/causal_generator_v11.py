@@ -52,6 +52,7 @@ class CausalGeneratedCaseV11:
     core_evidence: tuple[str, ...]
     verification_evidence: tuple[str, ...]
     distractor: str
+    minimum_path_costs: tuple[int, ...]
     evidence_budget: int
     sufficiency_threshold: float
     faithful_regime_probability: float
@@ -160,6 +161,10 @@ def generate_causal_case_v11(
     evidence_budget = (
         metrics.minimum_sufficient_cost + _VERIFICATION_RESERVE[difficulty]
     )
+    evidence_by_id = {item.evidence_id: item for item in task.evidence}
+    minimum_path_costs = tuple(
+        evidence_by_id[evidence_id].cost for evidence_id in base.core_evidence
+    )
     expected_posterior = faithful_regime_probability(difficulty)
 
     if abs(metrics.observed_full_posterior - expected_posterior) > 1e-12:
@@ -172,6 +177,8 @@ def generate_causal_case_v11(
         raise ValueError("CAUSAL_V11_BUDGET_NOT_SCARCE")
     if metrics.minimum_sufficient_cost != base.metrics.minimum_sufficient_cost:
         raise ValueError("CAUSAL_V11_CLASS_MECHANICS_CHANGED")
+    if sum(minimum_path_costs) != metrics.minimum_sufficient_cost:
+        raise ValueError("CAUSAL_V11_CORE_PATH_COST_INVALID")
     if metrics.minimum_sufficient_clues != base.metrics.minimum_sufficient_clues:
         raise ValueError("CAUSAL_V11_CLUE_MECHANICS_CHANGED")
     if task_class == "coordination_trap":
@@ -186,6 +193,7 @@ def generate_causal_case_v11(
         core_evidence=base.core_evidence,
         verification_evidence=base.verification_evidence,
         distractor=base.distractor,
+        minimum_path_costs=minimum_path_costs,
         evidence_budget=evidence_budget,
         sufficiency_threshold=threshold,
         faithful_regime_probability=expected_posterior,

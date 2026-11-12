@@ -1,6 +1,11 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+import tempfile
 import unittest
+
+from evolutionary_lab.evidence import EvidenceLedger, verify_ledger
 
 from collective_lab.causal_generator import CAUSAL_TASK_CLASSES, DIFFICULTIES
 from collective_lab.causal_generator_v11 import (
@@ -9,12 +14,14 @@ from collective_lab.causal_generator_v11 import (
     generate_causal_case_v11,
 )
 from collective_lab.oracle import ExactOracle
+from collective_lab.openrouter import Completion
 from collective_lab.protocol_v11 import (
     ComputePlan,
     collective_revision_order,
     evidence_allocation,
     permitted_collective_revisions,
 )
+from collective_lab.runner_v11 import HarnessV11, v11_condition_plan
 
 
 EXPECTED_COSTS = {
@@ -27,6 +34,29 @@ EXPECTED_BUDGETS = {
     "relational": {"easy": 8, "moderate": 21, "hard": 52},
     "coordination_trap": {"easy": 6, "moderate": 15, "hard": 21},
 }
+
+
+class _FakeClient:
+    model = "fake/model"
+
+    def __init__(self, messages: list[dict]) -> None:
+        self.messages = list(messages)
+
+    def complete(
+        self, messages, *, tools=None, response_format=None, max_tokens=900, seed=None
+    ) -> Completion:
+        return Completion(
+            request_id=f"fake-{len(self.messages)}",
+            model=self.model,
+            provider="fake",
+            message=self.messages.pop(0),
+            usage={
+                "prompt_tokens": 10,
+                "completion_tokens": 5,
+                "total_tokens": 15,
+                "cost": 0.0,
+            },
+        )
 
 
 class CausalGeneratorV11Tests(unittest.TestCase):
@@ -50,6 +80,10 @@ class CausalGeneratorV11Tests(unittest.TestCase):
                 self.assertEqual(
                     case.evidence_budget,
                     EXPECTED_BUDGETS[task_class][difficulty],
+                )
+                self.assertEqual(
+                    sum(case.minimum_path_costs),
+                    case.metrics.minimum_sufficient_cost,
                 )
                 self.assertLess(
                     case.evidence_budget,
@@ -140,6 +174,7 @@ class CausalGeneratorV11Tests(unittest.TestCase):
 
     def test_evidence_allocation_conserves_every_condition_budget(self) -> None:
         task_id = "causal-v11-relational-hard-812"
+        path_costs = (8, 8, 8, 8, 8, 8)
         for condition in (
             "single_agent",
             "independent_vote",
@@ -147,30 +182,50 @@ class CausalGeneratorV11Tests(unittest.TestCase):
             "communicating_collective",
         ):
             with self.subTest(condition=condition):
-                allocation = evidence_allocation(condition, 52, task_id=task_id)
+                allocation = evidence_allocation(
+                    condition,
+                    52,
+                    task_id=task_id,
+                    minimum_path_costs=path_costs,
+                )
                 self.assertEqual(
                     sum(allocation.investigator_budgets)
                     + allocation.synthesis_budget,
                     52,
                 )
-        single = evidence_allocation("single_agent", 52, task_id=task_id)
-        vote = evidence_allocation("independent_vote", 52, task_id=task_id)
+        single = evidence_allocation(
+            "single_agent", 52, task_id=task_id, minimum_path_costs=path_costs
+        )
+        vote = evidence_allocation(
+            "independent_vote", 52, task_id=task_id, minimum_path_costs=path_costs
+        )
         collective = evidence_allocation(
-            "communicating_collective", 52, task_id=task_id
+            "communicating_collective",
+            52,
+            task_id=task_id,
+            minimum_path_costs=path_costs,
         )
         self.assertEqual(single.investigator_budgets, (52,))
         self.assertEqual(len(vote.investigator_budgets), 4)
-        self.assertEqual(collective.synthesis_budget, 8)
+        self.assertEqual(sorted(vote.investigator_budgets), [9, 9, 17, 17])
+        self.assertEqual(sorted(collective.investigator_budgets), [8, 8, 8, 16])
+        self.assertEqual(collective.synthesis_budget, 12)
 
     def test_budget_remainder_rotation_is_deterministic(self) -> None:
         first = evidence_allocation(
-            "independent_vote", 21, task_id="causal-v11-trap-hard-1"
+            "independent_vote",
+            21,
+            task_id="causal-v11-trap-hard-1",
+            minimum_path_costs=(8, 3, 3, 3),
         )
         second = evidence_allocation(
-            "independent_vote", 21, task_id="causal-v11-trap-hard-1"
+            "independent_vote",
+            21,
+            task_id="causal-v11-trap-hard-1",
+            minimum_path_costs=(8, 3, 3, 3),
         )
         self.assertEqual(first, second)
-        self.assertEqual(sorted(first.investigator_budgets), [5, 5, 5, 6])
+        self.assertEqual(sorted(first.investigator_budgets), [4, 4, 4, 9])
 
     def test_collective_revision_plan_preserves_synthesis_reserve(self) -> None:
         plan = ComputePlan()
@@ -185,6 +240,73 @@ class CausalGeneratorV11Tests(unittest.TestCase):
         self.assertTrue(plan.permits_collective_revision(20_226))
         self.assertFalse(plan.permits_collective_revision(21_689))
         self.assertEqual(plan.upper_bound, 27_500)
+
+    def test_v11_condition_plan_is_path_feasible_and_serializable(self) -> None:
+        case = self.cases[("relational", "hard")]
+        for condition in (
+            "single_agent",
+            "independent_vote",
+            "independent_synthesizer",
+            "communicating_collective",
+        ):
+            with self.subTest(condition=condition):
+                plan = v11_condition_plan(
+                    case.task,
+                    condition,
+                    evidence_budget=case.evidence_budget,
+                    minimum_path_costs=case.minimum_path_costs,
+                )
+                allocation = plan["evidence_allocation"]
+                self.assertEqual(
+                    sum(allocation["investigator_budgets"])
+                    + allocation["synthesis_budget"],
+                    case.evidence_budget,
+                )
+                json.dumps(plan, sort_keys=True)
+
+    def test_v11_harness_records_plan_before_condition(self) -> None:
+        case = self.cases[("additive", "easy")]
+        task = case.task
+        probabilities = {candidate: 0.0 for candidate in task.candidates}
+        probabilities[task.correct_candidate] = 1.0
+        alternative = next(
+            candidate for candidate in task.candidates
+            if candidate != task.correct_candidate
+        )
+        message = {
+            "role": "assistant",
+            "content": json.dumps(
+                {
+                    "diagnosis": task.correct_candidate,
+                    "probabilities": probabilities,
+                    "cited_evidence": [],
+                    "rationale": "test",
+                    "strongest_alternative": alternative,
+                    "recommended_verification": [],
+                }
+            ),
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "ledger.jsonl"
+            harness = HarnessV11(
+                _FakeClient([message]),
+                EvidenceLedger(path),
+                max_tool_rounds=0,
+            )
+            result = harness.run_condition(
+                task,
+                "single_agent",
+                evidence_budget=case.evidence_budget,
+                minimum_path_costs=case.minimum_path_costs,
+                target_tokens=0,
+                compute_plan=ComputePlan(target_tokens=0),
+            )
+            records = [json.loads(line)["payload"] for line in path.read_text().splitlines()]
+            verification = verify_ledger(path)
+        self.assertTrue(result.score.accurate)
+        self.assertEqual(records[0]["kind"], "causal_v11_condition_plan")
+        self.assertEqual(records[-1]["kind"], "condition_complete")
+        self.assertTrue(verification["valid"])
 
 
 if __name__ == "__main__":
