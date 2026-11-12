@@ -1,0 +1,145 @@
+{
+  "accepted": 225,
+  "attempted": 225,
+  "cell_counts": {
+    "additive:easy": 25,
+    "additive:hard": 25,
+    "additive:moderate": 25,
+    "coordination_trap:easy": 25,
+    "coordination_trap:hard": 25,
+    "coordination_trap:moderate": 25,
+    "relational:easy": 25,
+    "relational:hard": 25,
+    "relational:moderate": 25
+  },
+  "correct_label_counts": {
+    "actuator_stiction": 45,
+    "circulation_loss": 45,
+    "controller_timing_fault": 45,
+    "none_of_the_above": 45,
+    "sensor_bias": 45
+  },
+  "correct_position_counts": {
+    "0": 45,
+    "1": 45,
+    "2": 45,
+    "3": 45,
+    "4": 45
+  },
+  "failures": [],
+  "first_seed": 500,
+  "generator_version": "causal-1.1-dev",
+  "leakage_probes": [
+    {
+      "accuracy": 0.08888888888888889,
+      "baseline_accuracy": 0.2,
+      "feature_set": "metadata_only",
+      "passed": true,
+      "target": "correct_label",
+      "test_cases": 90,
+      "threshold": 0.4,
+      "train_cases": 135
+    },
+    {
+      "accuracy": 0.15555555555555556,
+      "baseline_accuracy": 0.2,
+      "feature_set": "metadata_only",
+      "passed": true,
+      "target": "correct_position",
+      "test_cases": 90,
+      "threshold": 0.4,
+      "train_cases": 135
+    },
+    {
+      "accuracy": 0.2,
+      "baseline_accuracy": 0.2,
+      "feature_set": "text_only",
+      "passed": true,
+      "target": "correct_label",
+      "test_cases": 90,
+      "threshold": 0.4,
+      "train_cases": 135
+    },
+    {
+      "accuracy": 0.2,
+      "baseline_accuracy": 0.2,
+      "feature_set": "text_only",
+      "passed": true,
+      "target": "correct_position",
+      "test_cases": 90,
+      "threshold": 0.4,
+      "train_cases": 135
+    }
+  ],
+  "ledger_head": "91e3b0afbcfb43dcd719e8450dcefb551e1c7288531d1dac22dd92692c21aa6d",
+  "ledger_records": 227,
+  "metric_ranges": {
+    "cheap_correct_posterior": {
+      "maximum": 0.8260869565217391,
+      "minimum": 0.17391304347826086
+    },
+    "cheap_distractor_posterior": {
+      "maximum": 0.30434782608695654,
+      "minimum": 0.043478260869565216
+    },
+    "maximum_pair_synergy": {
+      "maximum": 0.49176165087490187,
+      "minimum": 0.07143949328206656
+    },
+    "maximum_single_information_gain": {
+      "maximum": 0.49176165087490187,
+      "minimum": 0.0
+    },
+    "minimal_sufficient_sets": {
+      "maximum": 48.0,
+      "minimum": 1.0
+    },
+    "minimum_cost_sufficient_sets": {
+      "maximum": 8.0,
+      "minimum": 1.0
+    },
+    "minimum_sufficient_clues": {
+      "maximum": 6.0,
+      "minimum": 3.0
+    },
+    "minimum_sufficient_cost": {
+      "maximum": 48.0,
+      "minimum": 3.0
+    },
+    "observed_full_posterior": {
+      "maximum": 0.8260869565217391,
+      "minimum": 0.6363636363636364
+    },
+    "prior_entropy": {
+      "maximum": 2.321928094887362,
+      "minimum": 2.321928094887362
+    }
+  },
+  "operating_ranges": {
+    "evidence_budget": {
+      "maximum": 52.0,
+      "minimum": 5.0
+    },
+    "faithful_regime_probability": {
+      "maximum": 0.8260869565217391,
+      "minimum": 0.6363636363636364
+    },
+    "sufficiency_threshold": {
+      "maximum": 0.75,
+      "minimum": 0.55
+    }
+  },
+  "passed": true,
+  "property_checks": {
+    "candidate_renaming_oracle_invariant": true,
+    "evidence_order_oracle_invariant": true,
+    "posterior_ceiling_ordered": true,
+    "scarce_budget_above_sufficient_cost": true,
+    "wording_oracle_invariant": true
+  },
+  "rejected": 0,
+  "rejection_counts": {},
+  "seeds_per_cell": 25,
+  "unique_causal_fingerprints": 225,
+  "unique_public_fingerprints": 225
+}
