@@ -1,0 +1,109 @@
+{
+  "payload": {
+    "audit": {
+      "accepted": 225,
+      "attempted": 225,
+      "ledger_head": "b7483e5b17cb7dbe16a8639b18e0a4ef7516e96dddc702274aec61813673e31b",
+      "rejected": 0,
+      "summary_path": "collective_runs/CAUSAL_V12_POLICY_AUDIT_20261113_DEV.json",
+      "summary_sha256": "36f195e2405fb7d8d1fe2e746ef8c1946f2c5a3be4b0bafa8c58f8b866ecef87"
+    },
+    "conditions": [
+      "single_agent",
+      "independent_vote",
+      "independent_synthesizer",
+      "communicating_collective"
+    ],
+    "difficulties": [
+      "easy",
+      "moderate",
+      "hard"
+    ],
+    "distribution_per_class": {
+      "easy": 3,
+      "hard": 3,
+      "moderate": 4
+    },
+    "execution_authorization": false,
+    "generator_lineage": "causal-1.1-dev",
+    "generator_version": "causal-1.1-dev",
+    "harness": {
+      "compute_plan": {
+        "lower_bound": 22500.0,
+        "mandatory_episode_reserve_tokens": 2200,
+        "max_completion_tokens": 1000,
+        "max_condition_requests": 18,
+        "max_private_reviews": 12,
+        "minimum_completion_tokens": 96,
+        "optional_call_reserve_tokens": 2600,
+        "post_call_safety_margin": 256,
+        "prompt_characters_per_token": 2.0,
+        "prompt_token_overhead": 384,
+        "target_tokens": 25000,
+        "tolerance": 0.1,
+        "upper_bound": 27500.0
+      },
+      "compute_plan_parameters": {
+        "mandatory_episode_reserve_tokens": 2200,
+        "max_completion_tokens": 1000,
+        "max_condition_requests": 18,
+        "max_private_reviews": 12,
+        "minimum_completion_tokens": 96,
+        "optional_call_reserve_tokens": 2600,
+        "post_call_safety_margin": 256,
+        "prompt_characters_per_token": 2.0,
+        "prompt_token_overhead": 384,
+        "target_tokens": 25000,
+        "tolerance": 0.1
+      },
+      "evidence_allocation": "v11_controls_and_shared_scout_deliberate_coordinate_collective",
+      "max_completion_tokens": 1000,
+      "max_tool_rounds": 2,
+      "model": "openai/gpt-6.1-sol",
+      "primary_metric": "five_class_brier_loss",
+      "reasoning_effort": "medium",
+      "request_timeout_seconds": 300
+    },
+    "manifest_type": "causal_v12_evaluation_configuration",
+    "master_seed": null,
+    "master_seed_commitment": null,
+    "protocol_version": "causal-1.2-dev",
+    "schema": "collective-intelligence-causal-v12-prepared-v1",
+    "signing": {
+      "algorithm": "Ed25519",
+      "public_key_der_sha256": "4fb6947ba7bbc76dac9b2b0687878e8b3be971b24586007562c2cfef002eaa4b",
+      "public_key_path": "collective_runs/collective-freeze-ed25519-public.pem",
+      "public_key_sha256": "feaff55bcad52df45db44af2efef2f424712fad1a1877d798f195a85027a345d"
+    },
+    "source_sha256": {
+      "CAUSAL_1_2_DEVELOPMENT_PROTOCOL.md": "1a430900edc09b454e5499e7be3b52d412bc68f8dd884fbd31b28735d71d994d",
+      "collective_lab/adaptive_v11.py": "9eb742553b6e16da847ad558d3ae1923b613cf30d8d190ea70254650e8ee1d07",
+      "collective_lab/causal.py": "e377d547adac956ec667ace78ecdb037b0815c22d876206510e6e0bb270bc161",
+      "collective_lab/causal_audit_v12.py": "dc24a4ebc6706d8175f5dbce57993a2dae1ef21c80aeca751ca198a770f6e0c3",
+      "collective_lab/causal_generator.py": "dd7d2f85c0996ff1973b65c1c391c169dd5858114c044a3d25db00667c142c79",
+      "collective_lab/causal_generator_v11.py": "8cb1f21bd2a6425f888562fbbe3796c49c68487e0e9159d71f203a976510c86e",
+      "collective_lab/core.py": "533c89098ab856a844069e80cc0a903e34faa01dcfea3ded99024b5d50e3c558",
+      "collective_lab/development_v12.py": "f8b3e7eaef48980ff62e2512fafb6c2d0857bc9c9603bcb0b5ac1a1ff4d3f95f",
+      "collective_lab/freeze_v12.py": "92944c727a22e691880a15b0252bf0348abc05bf234f857766c0fc7365d9d243",
+      "collective_lab/ledger.py": "cc12141067019b17a758ca12ab5507c40597f1ce2477a30701b60eae9fa68722",
+      "collective_lab/openrouter.py": "df242811d8101bc57a84a9c796d5ff48412df71f71b3e649f95f2ff6c9f23601",
+      "collective_lab/oracle.py": "291c320a67896601a3a1e67d73d03125c1aa368f0e4cee7190d906253823e6cf",
+      "collective_lab/protocol_v11.py": "2f4cc2a10f8a88b4751ff5152ec32eab69580fa2df398a596b491d87ee870cfa",
+      "collective_lab/protocol_v12.py": "242afbb19b504cf14cca955ed400600f1cf194c2a9fb915db5cbb53912ddf866",
+      "collective_lab/runner.py": "441e395d3bf535ab344a586f0992a078bf3925a7c52ee1cabaae647750658445",
+      "collective_lab/runner_v11.py": "0149bd4d25f48f6a1c6d4ea0af3507035099c31e605bd957f5e6df9f3e1c942c",
+      "collective_lab/runner_v12.py": "5aef2989cc02badfe2949ebf3036cebcb68879e4a4907c3cda793cf16d28baa6",
+      "pyproject.toml": "1a10fbc4347e2bf339497b5d7e2f4e7771bf9809ac0071de408d2c6279fefedf",
+      "tests/test_causal_v12.py": "72c648abad8a838dcfc8bd7287e38f2bddd89ff675608dffd484260b6c76f5b3"
+    },
+    "status": "not_authorized_seed_not_generated",
+    "task_classes": [
+      "additive",
+      "relational",
+      "coordination_trap"
+    ],
+    "task_count": 30,
+    "tasks": null
+  },
+  "payload_sha256": "17639c1da42ff4c66ceb69743d5703e1f0c9a045c7577db5e76a38bc8160a1df"
+}

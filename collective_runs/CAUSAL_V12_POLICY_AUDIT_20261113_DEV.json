@@ -1,0 +1,26 @@
+{
+  "accepted": 225,
+  "attempted": 225,
+  "compute_gate_checks": {
+    "completion_cap_never_exceeds_frozen_maximum": true,
+    "initial_staged_call_fits_with_five_reserves": true,
+    "lower_bound_is_frozen": true,
+    "near_ceiling_call_is_rejected": true,
+    "optional_call_respects_ceiling": true,
+    "request_count_is_bounded": true,
+    "upper_bound_is_frozen": true
+  },
+  "failures": [],
+  "generator_lineage": "causal-1.1-dev",
+  "hard_adaptive_source_passes": 75,
+  "ledger_head": "b7483e5b17cb7dbe16a8639b18e0a4ef7516e96dddc702274aec61813673e31b",
+  "ledger_records": 227,
+  "passed": true,
+  "protocol_version": "causal-1.2-dev",
+  "rejected": 0,
+  "representative_cells_attempted": 9,
+  "representative_cells_passed": 9,
+  "source_audit_head": "a04906c3a5dccdcb9156770afd75388358f1f00204d6f71d30658fe955a94e10",
+  "source_audit_path": "/home/peter/.codex/worktrees/558c/evolutionary-strategy-lab/collective_runs/causal-v11-adaptive-audit-20261112-dev.jsonl",
+  "source_audit_sha256": "41794a5ac5a9ca2fdc5b878ac2a0d9381f0bd1951274e715b898efe59afe8c6f"
+}
