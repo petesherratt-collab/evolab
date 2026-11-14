@@ -114,7 +114,6 @@ def _proposal_response_format(task: FaultTask) -> dict[str, Any]:
     evidence_array = {
         "type": "array",
         "items": {"type": "string", "enum": evidence_ids},
-        "uniqueItems": True,
     }
     return {
         "type": "json_schema",

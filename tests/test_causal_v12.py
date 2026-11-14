@@ -20,6 +20,7 @@ from collective_lab.runner_v12 import (
     ConditionTokenGate,
     ComputeBudgetExhausted,
     HarnessV12,
+    _proposal_response_format,
 )
 
 
@@ -46,6 +47,13 @@ class _ScriptedClient:
                 "cost": 0.0,
             },
         )
+
+
+class ProposalSchemaCompatibilityTests(unittest.TestCase):
+    def test_proposal_schema_uses_provider_supported_subset(self) -> None:
+        case = generate_causal_case_v11(20261300, "additive", "easy")
+        schema = _proposal_response_format(case.task)
+        self.assertNotIn("uniqueItems", json.dumps(schema))
 
 
 def _tool_call(evidence_ids: list[str], call_id: str) -> dict:
@@ -190,6 +198,15 @@ class ProtocolV12Tests(unittest.TestCase):
                     usage={"total_tokens": plan.upper_bound + 1},
                 )
             )
+
+    def test_default_prompt_estimate_retains_calibrated_safety_margin(self) -> None:
+        plan = ComputePlanV12()
+        estimate = plan.estimate_prompt_tokens(
+            [{"role": "user", "content": "x" * 4_000}]
+        )
+        self.assertEqual(plan.prompt_characters_per_token, 4.0)
+        self.assertGreater(estimate, 1_000)
+        self.assertLess(estimate, 1_500)
 
     def test_v12_seed_derivation_is_deterministic_and_split_specific(self) -> None:
         development = derive_v12_task_seed(

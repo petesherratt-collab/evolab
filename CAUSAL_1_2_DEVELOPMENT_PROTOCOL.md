@@ -157,3 +157,33 @@ requires a separate signed authorization artifact after explicit spend
 approval. The evaluation configuration must remain seedless and unauthorized.
 No evaluation seed, commitment, hidden world, or task fingerprint may be
 generated during this phase.
+
+## Development infrastructure amendment: 2026-11-13
+
+The first authorized attempt stopped on task 0 when the provider rejected the
+standard JSON Schema `uniqueItems` keyword in the acquisition-proposal response
+format. No task completed and the failed append-only ledger was retained.
+
+For provider compatibility, `uniqueItems` is omitted from that response schema.
+The harness parser continues to reject duplicate evidence identifiers, so the
+accepted proposal contract and all scientific semantics are unchanged. The
+same nine development task seeds and fingerprints must be re-sealed before the
+new attempt. This amendment does not authorize or alter evaluation.
+
+## Development compute-estimator amendment: 2026-11-14
+
+Attempt 1 completed eight tasks, then the final hard coordination-trap task
+stopped during independent synthesis because the preflight prompt estimator
+exhausted its conservative reservation. The condition had used 17,701 actual
+tokens; its last recorded prompt was estimated at 5,162 tokens but the provider
+reported 2,059 prompt tokens. This was a reservation failure, not exhaustion of
+the 27,500-token actual ceiling.
+
+Across all 456 completed requests in attempt 1, the original estimator was
+2.27x to 5.29x the provider-reported prompt usage. Its calibration changes from
+two to four serialized characters per estimated token. Replaying those 456
+observations leaves the revised estimate 1.26x to 2.78x actual prompt usage.
+The 384-token overhead, 256-token post-call margin, mandatory-episode reserves,
+18-request maximum, 25,000-token target, and 27,500-token actual ceiling remain
+unchanged. Only task 8 may be retried; the eight completed tasks remain sealed.
+This amendment does not authorize or alter evaluation.

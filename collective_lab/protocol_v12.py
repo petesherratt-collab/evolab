@@ -47,7 +47,7 @@ class ComputePlanV12:
     tolerance: float = 0.10
     max_completion_tokens: int = 1_000
     minimum_completion_tokens: int = 96
-    prompt_characters_per_token: float = 2.0
+    prompt_characters_per_token: float = 4.0
     prompt_token_overhead: int = 384
     post_call_safety_margin: int = 256
     mandatory_episode_reserve_tokens: int = 2_200
