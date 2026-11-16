@@ -1,0 +1,143 @@
+{
+  "payload": {
+    "audit": {
+      "accepted": 45,
+      "attempted": 45,
+      "ledger_head": "08d7eb0f21045979deb39ceda8a02ecde28de7985c257e782d90ef2246f2f95d",
+      "rejected": 0,
+      "scope": "unchanged_causal_v13_generator_only_not_v14_strategy",
+      "summary_path": "collective_runs/CAUSAL_V13_MECHANICAL_AUDIT_20261115_DEV.json",
+      "summary_sha256": "bfe40aa9d9ae84845a22e20b91f0d105d7571e8fcf50c87171f5a5ec54e47816"
+    },
+    "conditions": [
+      "single_agent",
+      "independent_vote",
+      "independent_synthesizer",
+      "communicating_collective"
+    ],
+    "difficulties": [
+      "easy",
+      "moderate",
+      "hard"
+    ],
+    "distribution_per_class": {
+      "easy": 3,
+      "hard": 3,
+      "moderate": 4
+    },
+    "execution_authorization": false,
+    "generator_lineage": "causal-1.1-dev",
+    "generator_version": "causal-1.3-dev",
+    "harness": {
+      "compute_plan": {
+        "lower_bound": 25000.0,
+        "mandatory_episode_reserve_tokens": 3200,
+        "max_completion_tokens": 1800,
+        "max_condition_requests": 18,
+        "max_private_reviews": 12,
+        "minimum_completion_tokens": 512,
+        "optional_call_reserve_tokens": 2600,
+        "post_call_safety_margin": 256,
+        "prompt_characters_per_token": 5.0,
+        "prompt_token_overhead": 384,
+        "target_tokens": 27500,
+        "tolerance": 0.09090909090909091,
+        "upper_bound": 30000.0
+      },
+      "compute_plan_parameters": {
+        "mandatory_episode_reserve_tokens": 3200,
+        "max_completion_tokens": 1800,
+        "max_condition_requests": 18,
+        "max_private_reviews": 12,
+        "minimum_completion_tokens": 512,
+        "optional_call_reserve_tokens": 2600,
+        "post_call_safety_margin": 256,
+        "prompt_characters_per_token": 5.0,
+        "prompt_token_overhead": 384,
+        "target_tokens": 27500,
+        "tolerance": 0.09090909090909091
+      },
+      "evidence_allocation": "equal_budget_v13_routing_and_v12_shared_scout_deliberate_coordinate",
+      "max_completion_tokens": 1800,
+      "max_tool_rounds": 2,
+      "model": "openai/gpt-6.1-sol",
+      "primary_metric": "five_class_brier_loss",
+      "reasoning_effort": "medium",
+      "request_timeout_seconds": 300
+    },
+    "manifest_type": "causal_v14_evaluation_configuration",
+    "master_seed": null,
+    "master_seed_commitment": null,
+    "protocol_version": "causal-1.4-dev",
+    "public_perspective_charter": [
+      {
+        "instruction": "Identify direct support and the cheapest observation that could falsify it.",
+        "lens_id": "causal_support",
+        "title": "Causal support"
+      },
+      {
+        "instruction": "Track joint, paired, routed, and conditional evidence; reject marginal-only reasoning.",
+        "lens_id": "dependency",
+        "title": "Dependency structure"
+      },
+      {
+        "instruction": "Audit shared sources, calibration, stale proxies, and latent common causes.",
+        "lens_id": "provenance",
+        "title": "Provenance and confounding"
+      },
+      {
+        "instruction": "Challenge the acquisition plan for decoys, duplicated spend, and unaffordable branches.",
+        "lens_id": "resource_adversary",
+        "title": "Resource adversary"
+      }
+    ],
+    "schema": "collective-intelligence-causal-v14-prepared-v1",
+    "signing": {
+      "algorithm": "Ed25519",
+      "public_key_der_sha256": "4fb6947ba7bbc76dac9b2b0687878e8b3be971b24586007562c2cfef002eaa4b",
+      "public_key_path": "collective_runs/collective-freeze-ed25519-public.pem",
+      "public_key_sha256": "feaff55bcad52df45db44af2efef2f424712fad1a1877d798f195a85027a345d"
+    },
+    "source_sha256": {
+      "CAUSAL_1_4_DEVELOPMENT_DESIGN.md": "265cce743f67d74b6bcef444f399df3b118277f87c926c408d3df00e4e0fec8f",
+      "collective_lab/causal.py": "e377d547adac956ec667ace78ecdb037b0815c22d876206510e6e0bb270bc161",
+      "collective_lab/causal_audit_v13.py": "d730868755d5dd7a32e9de11e4447aa5f8a4c4f88c12343b0a97610d4af05ebc",
+      "collective_lab/causal_generator.py": "dd7d2f85c0996ff1973b65c1c391c169dd5858114c044a3d25db00667c142c79",
+      "collective_lab/causal_generator_v11.py": "8cb1f21bd2a6425f888562fbbe3796c49c68487e0e9159d71f203a976510c86e",
+      "collective_lab/causal_generator_v13.py": "115db0cc5ec226e4fe20dd76a92d70fd4e2ca44c5cc07455a365e47d99991482",
+      "collective_lab/core.py": "533c89098ab856a844069e80cc0a903e34faa01dcfea3ded99024b5d50e3c558",
+      "collective_lab/development_v14.py": "48d7ef68b30c95f76f7bb504bc2e8ce9f4636dc3aef1b67c480af2607875d142",
+      "collective_lab/freeze_v12.py": "92944c727a22e691880a15b0252bf0348abc05bf234f857766c0fc7365d9d243",
+      "collective_lab/freeze_v14.py": "e8c787f25c024f76d37eda00ed82fe91bd1b686f3d29b029dd4f8955c325790b",
+      "collective_lab/ledger.py": "cc12141067019b17a758ca12ab5507c40597f1ce2477a30701b60eae9fa68722",
+      "collective_lab/openrouter.py": "df242811d8101bc57a84a9c796d5ff48412df71f71b3e649f95f2ff6c9f23601",
+      "collective_lab/oracle.py": "291c320a67896601a3a1e67d73d03125c1aa368f0e4cee7190d906253823e6cf",
+      "collective_lab/protocol_v11.py": "2f4cc2a10f8a88b4751ff5152ec32eab69580fa2df398a596b491d87ee870cfa",
+      "collective_lab/protocol_v12.py": "f3f1d8822dbbc83b0b9efd42b95809f28212d2fe33cb9adb7e4f3b38870c8876",
+      "collective_lab/protocol_v13.py": "b1b6f268c64f963372b57539bd86dfad72ff271bf2d6235af89bbb243654e3b6",
+      "collective_lab/protocol_v14.py": "d7a354a3ead2402e5f75c37d6f9c0729470f5ecc827ca852ce4bccd00e7b9aaa",
+      "collective_lab/runner.py": "441e395d3bf535ab344a586f0992a078bf3925a7c52ee1cabaae647750658445",
+      "collective_lab/runner_v11.py": "0149bd4d25f48f6a1c6d4ea0af3507035099c31e605bd957f5e6df9f3e1c942c",
+      "collective_lab/runner_v12.py": "4b02fe37f896c7bf784bd803674c41c7401214a061b566249aeedca1cc09b7ae",
+      "collective_lab/runner_v13.py": "74456028f6cb7f611fe9e1c33bc37fd19538a75fc15ec26f371c4077e1e67a78",
+      "collective_lab/runner_v14.py": "56833d0949c793841bc5924faee013a15f03b0e12974d86d75df943c67025651",
+      "pyproject.toml": "1a10fbc4347e2bf339497b5d7e2f4e7771bf9809ac0071de408d2c6279fefedf",
+      "tests/test_causal_v14.py": "72ae2f71c4069b05f64d99f8d1ca21c1e5152c9a304f328636b6f2a9ab0a9fff"
+    },
+    "status": "not_authorized_seed_not_generated",
+    "strategy": {
+      "coordinator_receives_scout_report": true,
+      "evidence_discipline": "Treat other agents' proposals and confidence as hypotheses, not observations. For relational evidence, resolve routing and polarity before combining channels; list unresolved dependencies instead of intersecting marginal candidate sets. Before changing a diagnosis, identify the purchased evidence and causal relation that warrants the change. Retain uncertainty when that relation is unresolved. Return compact JSON; keep the rationale to at most three sentences.",
+      "preserve_future_episode_reserves": true,
+      "report_recovery_attempts": 1
+    },
+    "task_classes": [
+      "additive",
+      "relational",
+      "coordination_trap"
+    ],
+    "task_count": 30,
+    "tasks": null
+  },
+  "payload_sha256": "15cf04d71af1d30ded5ca2a339e308127d3dc5efbfd9184ee8f4f82b2a0940a9"
+}
