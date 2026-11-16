@@ -135,3 +135,42 @@ The causal-1.2 gates remain unchanged:
 
 No significance test is performed on development tasks. The thirty-task
 evaluation remains forbidden until every development gate passes.
+
+## Development infrastructure amendment: 2026-11-15
+
+The first authorized campaign completed two tasks, then the hard additive task
+stopped during independent synthesis. It had used 21,806 actual tokens, but the
+preflight gate could not reserve both another tool-capable call and a later
+mandatory report beneath the 27,500-token ceiling.
+
+Prospectively, if a tool-capable request fails only this reservation check, the
+harness releases the future-tool reserve and makes one terminal report request
+with tools disabled. The terminal request is still dynamically capped against
+the unchanged actual-token ceiling. Request-count, evidence-budget, and compute
+eligibility checks remain unchanged. The failed ledger is retained, and the
+same sealed task seeds and fingerprints must be used for the resumed attempt.
+
+The resumed campaign completed three more tasks, then hard relational stopped
+after its four investigator episodes used 23,193 tokens before mandatory
+synthesis could begin. The 2,200-token future-episode reserve was below observed
+episode size. Causal-1.3 therefore raises only that reservation to 3,200 tokens.
+This forces optional tool exploration to terminate earlier when a mandatory
+future investigator or synthesizer must still run. The `25,000 ±10%` target,
+27,500-token ceiling, completion cap, request limit, and evidence budgets remain
+unchanged.
+
+Hard relational then completed synthesis but stopped before the coordinator's
+terminal report. Across that attempt, the four-character prompt estimator was
+1.28x to 1.90x provider-reported prompt usage. Calibration to five serialized
+characters per token replays those requests at 1.06x to 1.56x actual usage.
+The separate 256-token post-call margin remains. This calibration changes no
+actual-token ceiling, evidence allocation, request maximum, task seed, or task
+fingerprint.
+
+Seven tasks ultimately completed, including hard relational. The moderate
+coordination trap then reached 23,562 tokens before its synthesizer's terminal
+report and could not fit beneath 27,500. For the two remaining tasks only, the
+target becomes 27,500 with bounds of 25,000 to 30,000 tokens. This is the
+previously approved bounded ceiling increase, not an unbounded retry. The final
+report must treat the mixed compute envelopes as a development limitation; it
+cannot silently claim a uniform nine-task envelope.

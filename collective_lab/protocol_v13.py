@@ -56,4 +56,9 @@ def lens_charter() -> tuple[dict[str, str], ...]:
 
 @dataclass(frozen=True)
 class ComputePlanV13(ComputePlanV12):
-    """Causal-1.3 keeps the proven causal-1.2 compute envelope unchanged."""
+    """Bounded causal-1.3 envelope, including the final development amendment."""
+
+    target_tokens: int = 27_500
+    tolerance: float = 1.0 / 11.0
+    prompt_characters_per_token: float = 5.0
+    mandatory_episode_reserve_tokens: int = 3_200

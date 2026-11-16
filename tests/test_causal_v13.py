@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 import unittest
+import tempfile
+from pathlib import Path
+
+from evolutionary_lab.evidence import EvidenceLedger
 
 from collective_lab.causal_generator import CAUSAL_TASK_CLASSES, DIFFICULTIES
 from collective_lab.causal_generator_v13 import (
@@ -10,8 +14,38 @@ from collective_lab.causal_generator_v13 import (
 )
 from collective_lab.freeze_v13 import derive_v13_task_seed
 from collective_lab.oracle import ExactOracle
-from collective_lab.protocol_v13 import PERSPECTIVE_LENSES, lens_charter
-from collective_lab.runner_v13 import v13_condition_plan
+from collective_lab.openrouter import Completion
+from collective_lab.protocol_v13 import (
+    ComputePlanV13,
+    PERSPECTIVE_LENSES,
+    lens_charter,
+)
+from collective_lab.runner_v12 import ConditionTokenGate
+from collective_lab.runner_v13 import HarnessV13, v13_condition_plan
+
+
+class _TerminalClient:
+    model = "fake/model"
+
+    def __init__(self) -> None:
+        self.tools = []
+
+    def complete(
+        self, messages, *, tools=None, response_format=None, max_tokens=900, seed=None
+    ) -> Completion:
+        self.tools.append(tools)
+        return Completion(
+            request_id="terminal",
+            model=self.model,
+            provider="fake",
+            message={"role": "assistant", "content": "{}"},
+            usage={
+                "prompt_tokens": 100,
+                "completion_tokens": 10,
+                "total_tokens": 110,
+                "cost": 0.0,
+            },
+        )
 
 
 class CausalV13Tests(unittest.TestCase):
@@ -144,6 +178,41 @@ class CausalV13Tests(unittest.TestCase):
         )
         self.assertEqual(plan["protocol_version"], "causal-1.3-dev")
         self.assertEqual(len(plan["public_perspective_charter"]), 4)
+        self.assertEqual(
+            plan["compute_plan"]["mandatory_episode_reserve_tokens"], 3_200
+        )
+        self.assertEqual(
+            plan["compute_plan"]["prompt_characters_per_token"], 5.0
+        )
+        self.assertEqual(plan["compute_plan"]["lower_bound"], 25_000)
+        self.assertEqual(plan["compute_plan"]["upper_bound"], 30_000)
+
+    def test_tool_reservation_can_fall_back_to_terminal_report(self) -> None:
+        plan = ComputePlanV13(
+            target_tokens=2_000,
+            tolerance=0.10,
+            prompt_token_overhead=0,
+            post_call_safety_margin=0,
+        )
+        client = _TerminalClient()
+        with tempfile.TemporaryDirectory() as directory:
+            harness = HarnessV13(
+                client,
+                EvidenceLedger(Path(directory) / "fallback.jsonl"),
+                max_tokens=200,
+                max_tool_rounds=1,
+                compute_plan=plan,
+            )
+            harness._token_gate = ConditionTokenGate(plan, used_tokens=1_750)
+            harness._reserve_after = 400
+            completion = harness._complete(
+                [{"role": "user", "content": "finish"}],
+                tools=[{"type": "function", "function": {"name": "unused"}}],
+                response_format=None,
+                context={"condition": "test"},
+            )
+        self.assertEqual(completion.request_id, "terminal")
+        self.assertEqual(client.tools, [None])
 
 
 if __name__ == "__main__":

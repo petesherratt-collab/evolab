@@ -1,0 +1,324 @@
+{
+  "payload": {
+    "audit": {
+      "accepted": 45,
+      "attempted": 45,
+      "ledger_head": "08d7eb0f21045979deb39ceda8a02ecde28de7985c257e782d90ef2246f2f95d",
+      "rejected": 0,
+      "summary_path": "collective_runs/CAUSAL_V13_MECHANICAL_AUDIT_20261115_DEV.json",
+      "summary_sha256": "bfe40aa9d9ae84845a22e20b91f0d105d7571e8fcf50c87171f5a5ec54e47816"
+    },
+    "authorization_parent_payload_sha256": "644097354a4a90692ba7a8b414fda9448b0ba886f759c94dc5c4d2ff7d0e2a3b",
+    "conditions": [
+      "single_agent",
+      "independent_vote",
+      "independent_synthesizer",
+      "communicating_collective"
+    ],
+    "difficulties": [
+      "easy",
+      "moderate",
+      "hard"
+    ],
+    "execution_authorization": true,
+    "generator_lineage": "causal-1.1-dev",
+    "generator_version": "causal-1.3-dev",
+    "harness": {
+      "compute_plan": {
+        "lower_bound": 22500.0,
+        "mandatory_episode_reserve_tokens": 2200,
+        "max_completion_tokens": 1000,
+        "max_condition_requests": 18,
+        "max_private_reviews": 12,
+        "minimum_completion_tokens": 96,
+        "optional_call_reserve_tokens": 2600,
+        "post_call_safety_margin": 256,
+        "prompt_characters_per_token": 4.0,
+        "prompt_token_overhead": 384,
+        "target_tokens": 25000,
+        "tolerance": 0.1,
+        "upper_bound": 27500.0
+      },
+      "compute_plan_parameters": {
+        "mandatory_episode_reserve_tokens": 2200,
+        "max_completion_tokens": 1000,
+        "max_condition_requests": 18,
+        "max_private_reviews": 12,
+        "minimum_completion_tokens": 96,
+        "optional_call_reserve_tokens": 2600,
+        "post_call_safety_margin": 256,
+        "prompt_characters_per_token": 4.0,
+        "prompt_token_overhead": 384,
+        "target_tokens": 25000,
+        "tolerance": 0.1
+      },
+      "evidence_allocation": "equal_budget_v13_routing_and_v12_shared_scout_deliberate_coordinate",
+      "max_completion_tokens": 1000,
+      "max_tool_rounds": 2,
+      "model": "openai/gpt-6.1-sol",
+      "primary_metric": "five_class_brier_loss",
+      "reasoning_effort": "medium",
+      "request_timeout_seconds": 300
+    },
+    "manifest_type": "causal_v13_development",
+    "master_seed": "c7537b12b22682ccff6842209e07e6a784a0be9be0b174d98bc4e92c6e975578",
+    "protocol_version": "causal-1.3-dev",
+    "public_perspective_charter": [
+      {
+        "instruction": "Identify direct support and the cheapest observation that could falsify it.",
+        "lens_id": "causal_support",
+        "title": "Causal support"
+      },
+      {
+        "instruction": "Track joint, paired, routed, and conditional evidence; reject marginal-only reasoning.",
+        "lens_id": "dependency",
+        "title": "Dependency structure"
+      },
+      {
+        "instruction": "Audit shared sources, calibration, stale proxies, and latent common causes.",
+        "lens_id": "provenance",
+        "title": "Provenance and confounding"
+      },
+      {
+        "instruction": "Challenge the acquisition plan for decoys, duplicated spend, and unaffordable branches.",
+        "lens_id": "resource_adversary",
+        "title": "Resource adversary"
+      }
+    ],
+    "schema": "collective-intelligence-causal-v13-prepared-v1",
+    "scientific_use": "protocol_calibration_only_never_evaluation",
+    "seed_derivation": "uint64_be(SHA256(protocol_version|generator_version|split|task_class|difficulty|task_index|master_seed)[0:8])",
+    "signing": {
+      "algorithm": "Ed25519",
+      "public_key_der_sha256": "4fb6947ba7bbc76dac9b2b0687878e8b3be971b24586007562c2cfef002eaa4b",
+      "public_key_path": "collective_runs/collective-freeze-ed25519-public.pem",
+      "public_key_sha256": "feaff55bcad52df45db44af2efef2f424712fad1a1877d798f195a85027a345d"
+    },
+    "source_sha256": {
+      "CAUSAL_1_3_DEVELOPMENT_DESIGN.md": "b06b51b174d3f4b6ffc12335768b7cb16879381d164cdc3dd67d970decf3fa42",
+      "collective_lab/causal.py": "e377d547adac956ec667ace78ecdb037b0815c22d876206510e6e0bb270bc161",
+      "collective_lab/causal_audit_v13.py": "d730868755d5dd7a32e9de11e4447aa5f8a4c4f88c12343b0a97610d4af05ebc",
+      "collective_lab/causal_generator.py": "dd7d2f85c0996ff1973b65c1c391c169dd5858114c044a3d25db00667c142c79",
+      "collective_lab/causal_generator_v11.py": "8cb1f21bd2a6425f888562fbbe3796c49c68487e0e9159d71f203a976510c86e",
+      "collective_lab/causal_generator_v13.py": "115db0cc5ec226e4fe20dd76a92d70fd4e2ca44c5cc07455a365e47d99991482",
+      "collective_lab/core.py": "533c89098ab856a844069e80cc0a903e34faa01dcfea3ded99024b5d50e3c558",
+      "collective_lab/development_v13.py": "16239b552f191b36d7b5ef0a87743d3b9653d45e6db2fd1b4b5e5d5cbedfc5d2",
+      "collective_lab/freeze_v12.py": "92944c727a22e691880a15b0252bf0348abc05bf234f857766c0fc7365d9d243",
+      "collective_lab/freeze_v13.py": "45592860450d51ca886b5b9a1a476bff8aafd493afc94fb0084df5e201f633d1",
+      "collective_lab/ledger.py": "cc12141067019b17a758ca12ab5507c40597f1ce2477a30701b60eae9fa68722",
+      "collective_lab/openrouter.py": "df242811d8101bc57a84a9c796d5ff48412df71f71b3e649f95f2ff6c9f23601",
+      "collective_lab/oracle.py": "291c320a67896601a3a1e67d73d03125c1aa368f0e4cee7190d906253823e6cf",
+      "collective_lab/protocol_v11.py": "2f4cc2a10f8a88b4751ff5152ec32eab69580fa2df398a596b491d87ee870cfa",
+      "collective_lab/protocol_v12.py": "f3f1d8822dbbc83b0b9efd42b95809f28212d2fe33cb9adb7e4f3b38870c8876",
+      "collective_lab/protocol_v13.py": "0ac48e6b667a33516a35f47cb2ec99b1a64be7242167244d42ee2bfb7acf1cb2",
+      "collective_lab/runner.py": "441e395d3bf535ab344a586f0992a078bf3925a7c52ee1cabaae647750658445",
+      "collective_lab/runner_v11.py": "0149bd4d25f48f6a1c6d4ea0af3507035099c31e605bd957f5e6df9f3e1c942c",
+      "collective_lab/runner_v12.py": "4b02fe37f896c7bf784bd803674c41c7401214a061b566249aeedca1cc09b7ae",
+      "collective_lab/runner_v13.py": "74456028f6cb7f611fe9e1c33bc37fd19538a75fc15ec26f371c4077e1e67a78",
+      "pyproject.toml": "1a10fbc4347e2bf339497b5d7e2f4e7771bf9809ac0071de408d2c6279fefedf",
+      "tests/test_causal_v13.py": "072fe1ed76e120516a54832dbbcf894ba5c56550026546fce5abb2a1e8297662"
+    },
+    "status": "sealed_development_authorized",
+    "task_classes": [
+      "additive",
+      "relational",
+      "coordination_trap"
+    ],
+    "task_count": 9,
+    "tasks": [
+      {
+        "acquisition_lane_count": 0,
+        "acquisition_lanes_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "causal_fingerprint": "0261dfa5539beb267aeb1e5d710428092d5af587cf9feb2d58afe20d9609f1ee",
+        "difficulty": "easy",
+        "evidence_budget": 5,
+        "faithful_regime_probability": 0.8260869565217391,
+        "minimum_path_costs": [
+          1,
+          1,
+          1
+        ],
+        "public_fingerprint": "04134515525140fda5daef851c3160de07495a0f01c47cacb39418e37f53bb75",
+        "seed": 1938703409643409705,
+        "sufficiency_threshold": 0.75,
+        "task_class": "additive",
+        "task_index": 0,
+        "topology_router": null
+      },
+      {
+        "acquisition_lane_count": 3,
+        "acquisition_lanes_sha256": "8bd753e4aaa25bba41937cb55648c1ef34ed4f79d90e923c03685d34ca0a3a63",
+        "causal_fingerprint": "d2272a766fb7bff7512f3f1de1119aada64c78db18633ccdf0fef2a5ae894b17",
+        "difficulty": "moderate",
+        "evidence_budget": 11,
+        "faithful_regime_probability": 0.6363636363636364,
+        "minimum_path_costs": [
+          1,
+          3,
+          3,
+          3
+        ],
+        "public_fingerprint": "789e0930dfba06c4aaf69049c6d1a909a3234391081144278afb6437ea72fdd5",
+        "seed": 15213617236109433930,
+        "sufficiency_threshold": 0.55,
+        "task_class": "additive",
+        "task_index": 1,
+        "topology_router": "E03"
+      },
+      {
+        "acquisition_lane_count": 4,
+        "acquisition_lanes_sha256": "27cd29f68fce0250fbebb2d426f5d1acfa13f6a1514284a08cef5c7eec006d37",
+        "causal_fingerprint": "c5452ad86fece53199497da794f24c488a9797437d132fd44f10574a5526fff4",
+        "difficulty": "hard",
+        "evidence_budget": 28,
+        "faithful_regime_probability": 0.5555555555555556,
+        "minimum_path_costs": [
+          1,
+          8,
+          8,
+          1,
+          8
+        ],
+        "public_fingerprint": "da2764bbe0b845d4acee7d5a9c258ba7bf55b4ec1cf9ffafad04ccd8802d90e6",
+        "seed": 14811954199082771356,
+        "sufficiency_threshold": 0.48,
+        "task_class": "additive",
+        "task_index": 2,
+        "topology_router": "E01"
+      },
+      {
+        "acquisition_lane_count": 0,
+        "acquisition_lanes_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "causal_fingerprint": "7d0a3478c62b20b2bfa25228cc4dab1620eabdb9e1a2189e4a17c67f270dd72f",
+        "difficulty": "easy",
+        "evidence_budget": 8,
+        "faithful_regime_probability": 0.8260869565217391,
+        "minimum_path_costs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "public_fingerprint": "15a8649da16173a73ba529520fe4e3672542739b0ee767247b0d1b275635d754",
+        "seed": 11234651211992411327,
+        "sufficiency_threshold": 0.75,
+        "task_class": "relational",
+        "task_index": 3,
+        "topology_router": null
+      },
+      {
+        "acquisition_lane_count": 6,
+        "acquisition_lanes_sha256": "bb262bb2decf683a4105bf55b68342ce1d9d460180de4c75cf55cd02f4d1e4d5",
+        "causal_fingerprint": "63a53f04947a94cea9234bb13c21c66c96e60c356526f80e36e65af7da8d2ac6",
+        "difficulty": "moderate",
+        "evidence_budget": 20,
+        "faithful_regime_probability": 0.6363636363636364,
+        "minimum_path_costs": [
+          1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "public_fingerprint": "531c20d1cf37428ac04f2c33c19b9250a8149f510aece31b604e328d0c3418f0",
+        "seed": 2304412725306132574,
+        "sufficiency_threshold": 0.55,
+        "task_class": "relational",
+        "task_index": 4,
+        "topology_router": "E15"
+      },
+      {
+        "acquisition_lane_count": 7,
+        "acquisition_lanes_sha256": "772289dfe46f342d7439e7c6f0e815c8c77c388fe9533b546eb5aaf1949f86e6",
+        "causal_fingerprint": "b6c80c3155de552e69d58edaea352d068dc56ec09ec430a31d9000d8a5fda4e8",
+        "difficulty": "hard",
+        "evidence_budget": 52,
+        "faithful_regime_probability": 0.5555555555555556,
+        "minimum_path_costs": [
+          1,
+          8,
+          8,
+          8,
+          8,
+          8,
+          1,
+          8
+        ],
+        "public_fingerprint": "6774669283404b41860b025a03d81c67a539a198e7c7efd084f623d280b8d335",
+        "seed": 10669965213750411248,
+        "sufficiency_threshold": 0.48,
+        "task_class": "relational",
+        "task_index": 5,
+        "topology_router": "E19"
+      },
+      {
+        "acquisition_lane_count": 0,
+        "acquisition_lanes_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "causal_fingerprint": "12c8ccd72943f017663724a7ba247bbafaad981ac2a64848989e144bd587aea0",
+        "difficulty": "easy",
+        "evidence_budget": 6,
+        "faithful_regime_probability": 0.8260869565217391,
+        "minimum_path_costs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "public_fingerprint": "e84fb2351125584f6da57ca1a747665afabb38c0ca51a5fb5e5682c93cedb5f8",
+        "seed": 12241528487718123110,
+        "sufficiency_threshold": 0.75,
+        "task_class": "coordination_trap",
+        "task_index": 6,
+        "topology_router": null
+      },
+      {
+        "acquisition_lane_count": 4,
+        "acquisition_lanes_sha256": "70b44f82eb3f4ae5da340ba626c6b807fbf02362e707a2f75bc0c81ad124090d",
+        "causal_fingerprint": "73334e057924c04b088cb37b8cad7e83c322c32d174f12f9a7b080148d8ba067",
+        "difficulty": "moderate",
+        "evidence_budget": 14,
+        "faithful_regime_probability": 0.6363636363636364,
+        "minimum_path_costs": [
+          1,
+          3,
+          3,
+          3,
+          3
+        ],
+        "public_fingerprint": "70eaa26a2c5c7182fd000ecb6771fe77d018d5b45cfcfbdfceef694354ff489b",
+        "seed": 12449429233041060491,
+        "sufficiency_threshold": 0.55,
+        "task_class": "coordination_trap",
+        "task_index": 7,
+        "topology_router": "E07"
+      },
+      {
+        "acquisition_lane_count": 5,
+        "acquisition_lanes_sha256": "bcf6eaa379c16117a7dcd6dc097249019caf9929596ad5c7ae9ff2d5d346176f",
+        "causal_fingerprint": "99e3e281dc74b9de74e29651807dc06136a9bcbf45a99877090389ce2b1aae24",
+        "difficulty": "hard",
+        "evidence_budget": 21,
+        "faithful_regime_probability": 0.5555555555555556,
+        "minimum_path_costs": [
+          1,
+          3,
+          3,
+          3,
+          1,
+          8
+        ],
+        "public_fingerprint": "c94bafd20fcfc671efe61c82361e1d591e0964394696ec5b81317f668ab5d363",
+        "seed": 1679787325632971906,
+        "sufficiency_threshold": 0.48,
+        "task_class": "coordination_trap",
+        "task_index": 8,
+        "topology_router": "E01"
+      }
+    ]
+  },
+  "payload_sha256": "2ee952396f2e8d2ae8b402e1a60ef44a5f1adce2d70338a21d5dc94c67f27d0f"
+}

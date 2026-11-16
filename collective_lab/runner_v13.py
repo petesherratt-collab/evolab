@@ -8,6 +8,7 @@ from .openrouter import Completion
 from .protocol_v13 import ComputePlanV13, PERSPECTIVE_LENSES, lens_charter
 from .runner_v12 import (
     AcquisitionProposal,
+    ComputeBudgetExhausted,
     HarnessV12,
     SharedEvidencePool,
     v12_condition_plan,
@@ -20,6 +21,44 @@ def _render_lenses(lenses) -> str:
 
 class HarnessV13(HarnessV12):
     """Causal-1.3 harness distributing one public charter across roles."""
+
+    def _complete(
+        self,
+        messages: list[dict[str, Any]],
+        *,
+        tools: list[dict[str, Any]] | None = None,
+        response_format: dict[str, Any] | None = None,
+        context: dict[str, Any],
+    ) -> Completion:
+        try:
+            return super()._complete(
+                messages,
+                tools=tools,
+                response_format=response_format,
+                context=context,
+            )
+        except ComputeBudgetExhausted as exc:
+            if tools is None or str(exc) != "CAUSAL_V12_COMPUTE_BUDGET_EXHAUSTED":
+                raise
+            previous_reserve = self._reserve_after
+            self._reserve_after = 0
+            self.ledger.append(
+                {
+                    "kind": "causal_v13_terminal_report_fallback",
+                    "context": context,
+                    "reason": str(exc),
+                    "released_reserve": previous_reserve,
+                }
+            )
+            try:
+                return super()._complete(
+                    messages,
+                    tools=None,
+                    response_format=response_format,
+                    context={**context, "terminal_report_fallback": True},
+                )
+            finally:
+                self._reserve_after = previous_reserve
 
     def _agent_lenses(self, condition: str, agent_id: str):
         if condition == "single_agent":
