@@ -1,0 +1,254 @@
+{
+  "all_gates_passed": false,
+  "allocation_usd": "5.00",
+  "analysis_date": "2026-11-17",
+  "campaign_coverage_matches_nine_final_ledgers": true,
+  "campaign_verification": {
+    "head": "8418e11ad8c7aefa4b273ffb7959a157f74a79fd6844669c86abc99ebee57ede",
+    "records": 22,
+    "valid": true
+  },
+  "evaluation_authorized": false,
+  "evaluation_seed_generated": false,
+  "gates": [
+    {
+      "gate": 1,
+      "observed": 9,
+      "passed": true,
+      "required": 9
+    },
+    {
+      "evidence_budget_violations": [],
+      "failed_constituents": 0,
+      "gate": 2,
+      "malformed_final_reports": 0,
+      "passed": true,
+      "unsupported_citations": 0
+    },
+    {
+      "gate": 3,
+      "observed": 0.5052740740740742,
+      "passed": true,
+      "required_minimum": 0.12
+    },
+    {
+      "gate": 4,
+      "observed": 0.01244074074074079,
+      "passed": false,
+      "required_minimum": 0.1
+    },
+    {
+      "gate": 5,
+      "observed": 0.12976851851851856,
+      "passed": true,
+      "required_minimum": 0.05
+    },
+    {
+      "gate": 6,
+      "observed": 2,
+      "passed": false,
+      "required_minimum": 6
+    }
+  ],
+  "historical_v13_plus_v14_cost_usd": "6.1123993",
+  "manifest_verifications": {
+    "FROZEN_DEVELOPMENT_MANIFEST_CAUSAL_1_4_AUTHORIZED.json": {
+      "signature": {
+        "generator_version": "causal-1.3-dev",
+        "manifest_type": "causal_v14_development",
+        "payload_sha256": "67a4fcb1444320b001738692151de634f2a49c553426155e8e002cd0a3a0da91",
+        "signing_key_fingerprint": "4fb6947ba7bbc76dac9b2b0687878e8b3be971b24586007562c2cfef002eaa4b",
+        "valid": true
+      },
+      "sources_match": true
+    },
+    "FROZEN_EVALUATION_CONFIGURATION_CAUSAL_1_4_PREPARED.json": {
+      "signature": {
+        "generator_version": "causal-1.3-dev",
+        "manifest_type": "causal_v14_evaluation_configuration",
+        "payload_sha256": "15cf04d71af1d30ded5ca2a339e308127d3dc5efbfd9184ee8f4f82b2a0940a9",
+        "signing_key_fingerprint": "4fb6947ba7bbc76dac9b2b0687878e8b3be971b24586007562c2cfef002eaa4b",
+        "valid": true
+      },
+      "sources_match": true
+    }
+  },
+  "protocol": "causal-1.4-dev",
+  "recoveries": [
+    {
+      "acquired_evidence": [
+        "E05",
+        "E18"
+      ],
+      "agent_id": "investigator-3",
+      "condition": "independent_vote",
+      "kind": "causal_v14_report_recovery",
+      "ledger": "task-04-relational-moderate-12391905942884580868.jsonl",
+      "recovered": true,
+      "report": {
+        "cited_evidence": [
+          "E05",
+          "E18"
+        ],
+        "diagnosis": "none_of_the_above",
+        "probabilities": {
+          "actuator_stiction": 0.2,
+          "circulation_loss": 0.2,
+          "controller_timing_fault": 0.2,
+          "none_of_the_above": 0.2,
+          "sensor_bias": 0.2
+        },
+        "rationale": "E05 establishes active routing, while E18 supplies reference phase 0; neither establishes a fault-specific causal relation. Lane observations, candidate mappings, polarity, and shared-provenance dependencies remain unresolved, so equal probabilities represent insufficient discrimination. The diagnosis is a required tie-break, not evidence that the listed faults are absent.",
+        "recommended_verification": [
+          "E17",
+          "E20",
+          "E14",
+          "E02",
+          "E07",
+          "E11"
+        ],
+        "strongest_alternative": "controller_timing_fault"
+      }
+    },
+    {
+      "acquired_evidence": [
+        "E01",
+        "E09",
+        "E12",
+        "E17"
+      ],
+      "agent_id": "single",
+      "condition": "single_agent",
+      "kind": "causal_v14_report_recovery",
+      "ledger": "task-05-relational-hard-9023572141136782737.jsonl",
+      "recovered": true,
+      "report": {
+        "cited_evidence": [
+          "E12",
+          "E17",
+          "E01",
+          "E09"
+        ],
+        "diagnosis": "actuator_stiction",
+        "probabilities": {
+          "actuator_stiction": 0.3333333333333333,
+          "circulation_loss": 0.0,
+          "controller_timing_fault": 0.3333333333333333,
+          "none_of_the_above": 0.0,
+          "sensor_bias": 0.3333333333333333
+        },
+        "rationale": "E12 validates the active reference and trace lanes; E17 and E01 give XOR 1\u22951=0, supporting actuator_stiction, controller_timing_fault, and sensor_bias equally. The diagnosis is a tie-breaking label, not a uniquely isolated fault. E09 establishes branch B but supplies no further candidate discrimination; remaining channels' branch dependencies and shared provenance are unresolved.",
+        "recommended_verification": [
+          "E02",
+          "E18",
+          "E20",
+          "E06"
+        ],
+        "strongest_alternative": "sensor_bias"
+      }
+    }
+  ],
+  "remaining_allocation_usd": "2.2638321",
+  "task_audits": [
+    {
+      "ledger": "collective_runs/development-v14-20261116/task-00-additive-easy-3879206773749297580.jsonl",
+      "manifest_task_fingerprint_matches": true,
+      "reported_call_cost_usd": "0.3034352",
+      "uniform_compute_configuration_matches": true,
+      "verification": {
+        "head": "327607e3bc8c4e615941dd11774d9ef44c3188c98c799ff07ae474ca5b93f95a",
+        "records": 102,
+        "valid": true
+      }
+    },
+    {
+      "ledger": "collective_runs/development-v14-20261116/task-01-additive-moderate-3860837050948073932.jsonl",
+      "manifest_task_fingerprint_matches": true,
+      "reported_call_cost_usd": "0.2818987",
+      "uniform_compute_configuration_matches": true,
+      "verification": {
+        "head": "6321789327afe5553ffac37e5e52a34be2a91845977115787ff89ad08bd3645f",
+        "records": 100,
+        "valid": true
+      }
+    },
+    {
+      "ledger": "collective_runs/development-v14-20261116/task-02-additive-hard-15347797767145804119.jsonl",
+      "manifest_task_fingerprint_matches": true,
+      "reported_call_cost_usd": "0.3056421",
+      "uniform_compute_configuration_matches": true,
+      "verification": {
+        "head": "68a1abbe7d5e50df8304689e7fc1ee3ebdbbb8f0fee344c954e72f89262b212d",
+        "records": 111,
+        "valid": true
+      }
+    },
+    {
+      "ledger": "collective_runs/development-v14-20261116/task-03-relational-easy-14561053218862000963.jsonl",
+      "manifest_task_fingerprint_matches": true,
+      "reported_call_cost_usd": "0.2866797",
+      "uniform_compute_configuration_matches": true,
+      "verification": {
+        "head": "66778115161f2598b1c21a0fedbcbf8576a89ca825b6012e2cb55fbfae680fa3",
+        "records": 112,
+        "valid": true
+      }
+    },
+    {
+      "ledger": "collective_runs/development-v14-20261116/task-04-relational-moderate-12391905942884580868.jsonl",
+      "manifest_task_fingerprint_matches": true,
+      "reported_call_cost_usd": "0.2938378",
+      "uniform_compute_configuration_matches": true,
+      "verification": {
+        "head": "e7122de55097c00a88350f684f8e76054cdd259e89cd8d8c5f0a3d135ccd554b",
+        "records": 100,
+        "valid": true
+      }
+    },
+    {
+      "ledger": "collective_runs/development-v14-20261116/task-05-relational-hard-9023572141136782737.jsonl",
+      "manifest_task_fingerprint_matches": true,
+      "reported_call_cost_usd": "0.3369883",
+      "uniform_compute_configuration_matches": true,
+      "verification": {
+        "head": "de2a08bfedd173234b8540d37390e5c39e9c3775c412ae10d5b7175068a5c8ed",
+        "records": 101,
+        "valid": true
+      }
+    },
+    {
+      "ledger": "collective_runs/development-v14-20261116/task-06-coordination_trap-easy-10812831048998146760.jsonl",
+      "manifest_task_fingerprint_matches": true,
+      "reported_call_cost_usd": "0.3109012",
+      "uniform_compute_configuration_matches": true,
+      "verification": {
+        "head": "9d4f77d1c076eb8cbe2860b8522def75770938d91a3f22c6e53059fe7fe6a7c0",
+        "records": 106,
+        "valid": true
+      }
+    },
+    {
+      "ledger": "collective_runs/development-v14-20261116/task-07-coordination_trap-moderate-17276661088623091949.jsonl",
+      "manifest_task_fingerprint_matches": true,
+      "reported_call_cost_usd": "0.3072766",
+      "uniform_compute_configuration_matches": true,
+      "verification": {
+        "head": "07f110a7c98acb99d9a1f85f4f9419642c14a56e6a3eb6e56dd2644a2b546023",
+        "records": 102,
+        "valid": true
+      }
+    },
+    {
+      "ledger": "collective_runs/development-v14-20261116/task-08-coordination_trap-hard-1451724308737059675.jsonl",
+      "manifest_task_fingerprint_matches": true,
+      "reported_call_cost_usd": "0.3095083",
+      "uniform_compute_configuration_matches": true,
+      "verification": {
+        "head": "c5bc29ff69b0d94028112c2566e19538e40df1d8b3622ef095fcfb2028b20048",
+        "records": 105,
+        "valid": true
+      }
+    }
+  ],
+  "total_reported_provider_cost_usd": "2.7361679"
+}

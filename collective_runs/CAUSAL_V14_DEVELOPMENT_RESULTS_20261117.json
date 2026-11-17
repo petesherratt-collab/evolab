@@ -1,0 +1,522 @@
+{
+  "all_tasks_sensitivity": {
+    "conditions": {
+      "communicating_collective": {
+        "accuracy": 0.5555555555555556,
+        "failed_constituents": 0,
+        "malformed_reports": 0,
+        "maximum_total_tokens": 28115.0,
+        "mean_brier_loss": 0.49283333333333335,
+        "mean_evidence_spent": 9.88888888888889,
+        "mean_total_tokens": 26407.333333333332,
+        "median_brier_loss": 0.6349999999999999,
+        "minimum_total_tokens": 25305.0,
+        "recorded_errors": 0,
+        "tasks": 9,
+        "total_reported_cost": 0.6908847,
+        "unsupported_citations": 0
+      },
+      "independent_synthesizer": {
+        "accuracy": 0.4444444444444444,
+        "failed_constituents": 0,
+        "malformed_reports": 0,
+        "maximum_total_tokens": 28444.0,
+        "mean_brier_loss": 0.622601851851852,
+        "mean_evidence_spent": 8.11111111111111,
+        "mean_total_tokens": 26701.11111111111,
+        "median_brier_loss": 0.8000000000000002,
+        "minimum_total_tokens": 25183.0,
+        "recorded_errors": 0,
+        "tasks": 9,
+        "total_reported_cost": 0.5954200000000001,
+        "unsupported_citations": 0
+      },
+      "independent_vote": {
+        "accuracy": 0.3333333333333333,
+        "failed_constituents": 0,
+        "malformed_reports": 0,
+        "maximum_total_tokens": 27424.0,
+        "mean_brier_loss": 0.6670709490740742,
+        "mean_evidence_spent": 8.666666666666666,
+        "mean_total_tokens": 26046.11111111111,
+        "median_brier_loss": 0.7186,
+        "minimum_total_tokens": 25221.0,
+        "recorded_errors": 2,
+        "tasks": 9,
+        "total_reported_cost": 0.6626217999999999,
+        "unsupported_citations": 0
+      },
+      "single_agent": {
+        "accuracy": 0.6666666666666666,
+        "failed_constituents": 0,
+        "malformed_reports": 0,
+        "maximum_total_tokens": 27202.0,
+        "mean_brier_loss": 0.5052740740740742,
+        "mean_evidence_spent": 10.333333333333334,
+        "mean_total_tokens": 26328.333333333332,
+        "median_brier_loss": 0.6666666666666667,
+        "minimum_total_tokens": 25033.0,
+        "recorded_errors": 1,
+        "tasks": 9,
+        "total_reported_cost": 0.7872414,
+        "unsupported_citations": 0
+      }
+    },
+    "contrasts": {
+      "collective_vs_independent_synthesizer": {
+        "mean_brier_improvement": 0.12976851851851856,
+        "target_higher": 0,
+        "target_lower": 5,
+        "task_differences": [
+          0.15345000000000006,
+          0.03166666666666684,
+          0.22125000000000017,
+          0.0,
+          0.0,
+          0.13200000000000023,
+          0.6295499999999999,
+          0.0,
+          0.0
+        ],
+        "tasks": 9,
+        "tied": 4
+      },
+      "collective_vs_independent_vote": {
+        "mean_brier_improvement": 0.1742376157407408,
+        "target_higher": 1,
+        "target_lower": 6,
+        "task_differences": [
+          0.15345000000000006,
+          0.03166666666666684,
+          0.22125000000000017,
+          0.4832,
+          0.0,
+          0.13200000000000023,
+          0.627971875,
+          -0.08140000000000014,
+          0.0
+        ],
+        "tasks": 9,
+        "tied": 2
+      },
+      "collective_vs_single": {
+        "mean_brier_improvement": 0.01244074074074079,
+        "target_higher": 2,
+        "target_lower": 2,
+        "task_differences": [
+          0.06625000000000004,
+          -0.1741999999999999,
+          0.22125000000000017,
+          0.0,
+          0.0,
+          -0.0013333333333331865,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tasks": 9,
+        "tied": 5
+      }
+    }
+  },
+  "campaign": null,
+  "eligible_only": {
+    "conditions": {
+      "communicating_collective": {
+        "accuracy": 0.5555555555555556,
+        "failed_constituents": 0,
+        "malformed_reports": 0,
+        "maximum_total_tokens": 28115.0,
+        "mean_brier_loss": 0.49283333333333335,
+        "mean_evidence_spent": 9.88888888888889,
+        "mean_total_tokens": 26407.333333333332,
+        "median_brier_loss": 0.6349999999999999,
+        "minimum_total_tokens": 25305.0,
+        "recorded_errors": 0,
+        "tasks": 9,
+        "total_reported_cost": 0.6908847,
+        "unsupported_citations": 0
+      },
+      "independent_synthesizer": {
+        "accuracy": 0.4444444444444444,
+        "failed_constituents": 0,
+        "malformed_reports": 0,
+        "maximum_total_tokens": 28444.0,
+        "mean_brier_loss": 0.622601851851852,
+        "mean_evidence_spent": 8.11111111111111,
+        "mean_total_tokens": 26701.11111111111,
+        "median_brier_loss": 0.8000000000000002,
+        "minimum_total_tokens": 25183.0,
+        "recorded_errors": 0,
+        "tasks": 9,
+        "total_reported_cost": 0.5954200000000001,
+        "unsupported_citations": 0
+      },
+      "independent_vote": {
+        "accuracy": 0.3333333333333333,
+        "failed_constituents": 0,
+        "malformed_reports": 0,
+        "maximum_total_tokens": 27424.0,
+        "mean_brier_loss": 0.6670709490740742,
+        "mean_evidence_spent": 8.666666666666666,
+        "mean_total_tokens": 26046.11111111111,
+        "median_brier_loss": 0.7186,
+        "minimum_total_tokens": 25221.0,
+        "recorded_errors": 2,
+        "tasks": 9,
+        "total_reported_cost": 0.6626217999999999,
+        "unsupported_citations": 0
+      },
+      "single_agent": {
+        "accuracy": 0.6666666666666666,
+        "failed_constituents": 0,
+        "malformed_reports": 0,
+        "maximum_total_tokens": 27202.0,
+        "mean_brier_loss": 0.5052740740740742,
+        "mean_evidence_spent": 10.333333333333334,
+        "mean_total_tokens": 26328.333333333332,
+        "median_brier_loss": 0.6666666666666667,
+        "minimum_total_tokens": 25033.0,
+        "recorded_errors": 1,
+        "tasks": 9,
+        "total_reported_cost": 0.7872414,
+        "unsupported_citations": 0
+      }
+    },
+    "contrasts": {
+      "collective_vs_independent_synthesizer": {
+        "mean_brier_improvement": 0.12976851851851856,
+        "target_higher": 0,
+        "target_lower": 5,
+        "task_differences": [
+          0.15345000000000006,
+          0.03166666666666684,
+          0.22125000000000017,
+          0.0,
+          0.0,
+          0.13200000000000023,
+          0.6295499999999999,
+          0.0,
+          0.0
+        ],
+        "tasks": 9,
+        "tied": 4
+      },
+      "collective_vs_independent_vote": {
+        "mean_brier_improvement": 0.1742376157407408,
+        "target_higher": 1,
+        "target_lower": 6,
+        "task_differences": [
+          0.15345000000000006,
+          0.03166666666666684,
+          0.22125000000000017,
+          0.4832,
+          0.0,
+          0.13200000000000023,
+          0.627971875,
+          -0.08140000000000014,
+          0.0
+        ],
+        "tasks": 9,
+        "tied": 2
+      },
+      "collective_vs_single": {
+        "mean_brier_improvement": 0.01244074074074079,
+        "target_higher": 2,
+        "target_lower": 2,
+        "task_differences": [
+          0.06625000000000004,
+          -0.1741999999999999,
+          0.22125000000000017,
+          0.0,
+          0.0,
+          -0.0013333333333331865,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tasks": 9,
+        "tied": 5
+      }
+    }
+  },
+  "integrity": {
+    "compute_eligible_tasks": 9,
+    "compute_ineligible_task_ids": [],
+    "task_ledger_records": 939,
+    "task_ledgers": 9,
+    "valid_task_ledgers": 9
+  },
+  "tasks": [
+    {
+      "compute_eligible": true,
+      "condition_accurate": {
+        "communicating_collective": true,
+        "independent_synthesizer": true,
+        "independent_vote": true,
+        "single_agent": true
+      },
+      "condition_brier_loss": {
+        "communicating_collective": 0.05134999999999998,
+        "independent_synthesizer": 0.20480000000000004,
+        "independent_vote": 0.20480000000000004,
+        "single_agent": 0.11760000000000002
+      },
+      "condition_total_tokens": {
+        "communicating_collective": 25305.0,
+        "independent_synthesizer": 26072.0,
+        "independent_vote": 25502.0,
+        "single_agent": 25033.0
+      },
+      "difficulty": "easy",
+      "ledger": "collective_runs/development-v14-20261116/task-00-additive-easy-3879206773749297580.jsonl",
+      "ledger_verification": {
+        "head": "327607e3bc8c4e615941dd11774d9ef44c3188c98c799ff07ae474ca5b93f95a",
+        "records": 102,
+        "valid": true
+      },
+      "task_class": "additive",
+      "task_id": "causal-v13-additive-easy-3879206773749297580"
+    },
+    {
+      "compute_eligible": true,
+      "condition_accurate": {
+        "communicating_collective": true,
+        "independent_synthesizer": true,
+        "independent_vote": false,
+        "single_agent": true
+      },
+      "condition_brier_loss": {
+        "communicating_collective": 0.6349999999999999,
+        "independent_synthesizer": 0.6666666666666667,
+        "independent_vote": 0.6666666666666667,
+        "single_agent": 0.4608
+      },
+      "condition_total_tokens": {
+        "communicating_collective": 26768.0,
+        "independent_synthesizer": 25593.0,
+        "independent_vote": 25492.0,
+        "single_agent": 26536.0
+      },
+      "difficulty": "moderate",
+      "ledger": "collective_runs/development-v14-20261116/task-01-additive-moderate-3860837050948073932.jsonl",
+      "ledger_verification": {
+        "head": "6321789327afe5553ffac37e5e52a34be2a91845977115787ff89ad08bd3645f",
+        "records": 100,
+        "valid": true
+      },
+      "task_class": "additive",
+      "task_id": "causal-v13-additive-moderate-3860837050948073932"
+    },
+    {
+      "compute_eligible": true,
+      "condition_accurate": {
+        "communicating_collective": false,
+        "independent_synthesizer": false,
+        "independent_vote": false,
+        "single_agent": true
+      },
+      "condition_brier_loss": {
+        "communicating_collective": 0.57875,
+        "independent_synthesizer": 0.8000000000000002,
+        "independent_vote": 0.8000000000000002,
+        "single_agent": 0.8000000000000002
+      },
+      "condition_total_tokens": {
+        "communicating_collective": 26965.0,
+        "independent_synthesizer": 28444.0,
+        "independent_vote": 26124.0,
+        "single_agent": 27202.0
+      },
+      "difficulty": "hard",
+      "ledger": "collective_runs/development-v14-20261116/task-02-additive-hard-15347797767145804119.jsonl",
+      "ledger_verification": {
+        "head": "68a1abbe7d5e50df8304689e7fc1ee3ebdbbb8f0fee344c954e72f89262b212d",
+        "records": 111,
+        "valid": true
+      },
+      "task_class": "additive",
+      "task_id": "causal-v13-additive-hard-15347797767145804119"
+    },
+    {
+      "compute_eligible": true,
+      "condition_accurate": {
+        "communicating_collective": true,
+        "independent_synthesizer": true,
+        "independent_vote": false,
+        "single_agent": true
+      },
+      "condition_brier_loss": {
+        "communicating_collective": 0.05119999999999998,
+        "independent_synthesizer": 0.05119999999999998,
+        "independent_vote": 0.5344,
+        "single_agent": 0.05119999999999998
+      },
+      "condition_total_tokens": {
+        "communicating_collective": 25340.0,
+        "independent_synthesizer": 25183.0,
+        "independent_vote": 26119.0,
+        "single_agent": 26612.0
+      },
+      "difficulty": "easy",
+      "ledger": "collective_runs/development-v14-20261116/task-03-relational-easy-14561053218862000963.jsonl",
+      "ledger_verification": {
+        "head": "66778115161f2598b1c21a0fedbcbf8576a89ca825b6012e2cb55fbfae680fa3",
+        "records": 112,
+        "valid": true
+      },
+      "task_class": "relational",
+      "task_id": "causal-v13-relational-easy-14561053218862000963"
+    },
+    {
+      "compute_eligible": true,
+      "condition_accurate": {
+        "communicating_collective": false,
+        "independent_synthesizer": false,
+        "independent_vote": false,
+        "single_agent": false
+      },
+      "condition_brier_loss": {
+        "communicating_collective": 0.8000000000000002,
+        "independent_synthesizer": 0.8000000000000002,
+        "independent_vote": 0.8000000000000002,
+        "single_agent": 0.8000000000000002
+      },
+      "condition_total_tokens": {
+        "communicating_collective": 25832.0,
+        "independent_synthesizer": 26614.0,
+        "independent_vote": 27424.0,
+        "single_agent": 25827.0
+      },
+      "difficulty": "moderate",
+      "ledger": "collective_runs/development-v14-20261116/task-04-relational-moderate-12391905942884580868.jsonl",
+      "ledger_verification": {
+        "head": "e7122de55097c00a88350f684f8e76054cdd259e89cd8d8c5f0a3d135ccd554b",
+        "records": 100,
+        "valid": true
+      },
+      "task_class": "relational",
+      "task_id": "causal-v13-relational-moderate-12391905942884580868"
+    },
+    {
+      "compute_eligible": true,
+      "condition_accurate": {
+        "communicating_collective": false,
+        "independent_synthesizer": false,
+        "independent_vote": false,
+        "single_agent": false
+      },
+      "condition_brier_loss": {
+        "communicating_collective": 0.6679999999999999,
+        "independent_synthesizer": 0.8000000000000002,
+        "independent_vote": 0.8000000000000002,
+        "single_agent": 0.6666666666666667
+      },
+      "condition_total_tokens": {
+        "communicating_collective": 28115.0,
+        "independent_synthesizer": 26591.0,
+        "independent_vote": 26161.0,
+        "single_agent": 26777.0
+      },
+      "difficulty": "hard",
+      "ledger": "collective_runs/development-v14-20261116/task-05-relational-hard-9023572141136782737.jsonl",
+      "ledger_verification": {
+        "head": "de2a08bfedd173234b8540d37390e5c39e9c3775c412ae10d5b7175068a5c8ed",
+        "records": 101,
+        "valid": true
+      },
+      "task_class": "relational",
+      "task_id": "causal-v13-relational-hard-9023572141136782737"
+    },
+    {
+      "compute_eligible": true,
+      "condition_accurate": {
+        "communicating_collective": true,
+        "independent_synthesizer": true,
+        "independent_vote": true,
+        "single_agent": true
+      },
+      "condition_brier_loss": {
+        "communicating_collective": 0.05119999999999998,
+        "independent_synthesizer": 0.68075,
+        "independent_vote": 0.679171875,
+        "single_agent": 0.05119999999999998
+      },
+      "condition_total_tokens": {
+        "communicating_collective": 25579.0,
+        "independent_synthesizer": 26623.0,
+        "independent_vote": 25504.0,
+        "single_agent": 25765.0
+      },
+      "difficulty": "easy",
+      "ledger": "collective_runs/development-v14-20261116/task-06-coordination_trap-easy-10812831048998146760.jsonl",
+      "ledger_verification": {
+        "head": "9d4f77d1c076eb8cbe2860b8522def75770938d91a3f22c6e53059fe7fe6a7c0",
+        "records": 106,
+        "valid": true
+      },
+      "task_class": "coordination_trap",
+      "task_id": "causal-v13-coordination_trap-easy-10812831048998146760"
+    },
+    {
+      "compute_eligible": true,
+      "condition_accurate": {
+        "communicating_collective": true,
+        "independent_synthesizer": false,
+        "independent_vote": false,
+        "single_agent": false
+      },
+      "condition_brier_loss": {
+        "communicating_collective": 0.8000000000000002,
+        "independent_synthesizer": 0.8000000000000002,
+        "independent_vote": 0.7186,
+        "single_agent": 0.8000000000000002
+      },
+      "condition_total_tokens": {
+        "communicating_collective": 26315.0,
+        "independent_synthesizer": 28386.0,
+        "independent_vote": 26868.0,
+        "single_agent": 26054.0
+      },
+      "difficulty": "moderate",
+      "ledger": "collective_runs/development-v14-20261116/task-07-coordination_trap-moderate-17276661088623091949.jsonl",
+      "ledger_verification": {
+        "head": "07f110a7c98acb99d9a1f85f4f9419642c14a56e6a3eb6e56dd2644a2b546023",
+        "records": 102,
+        "valid": true
+      },
+      "task_class": "coordination_trap",
+      "task_id": "causal-v13-coordination_trap-moderate-17276661088623091949"
+    },
+    {
+      "compute_eligible": true,
+      "condition_accurate": {
+        "communicating_collective": false,
+        "independent_synthesizer": false,
+        "independent_vote": true,
+        "single_agent": true
+      },
+      "condition_brier_loss": {
+        "communicating_collective": 0.8000000000000002,
+        "independent_synthesizer": 0.8000000000000002,
+        "independent_vote": 0.8000000000000002,
+        "single_agent": 0.8000000000000002
+      },
+      "condition_total_tokens": {
+        "communicating_collective": 27447.0,
+        "independent_synthesizer": 26804.0,
+        "independent_vote": 25221.0,
+        "single_agent": 27149.0
+      },
+      "difficulty": "hard",
+      "ledger": "collective_runs/development-v14-20261116/task-08-coordination_trap-hard-1451724308737059675.jsonl",
+      "ledger_verification": {
+        "head": "c5bc29ff69b0d94028112c2566e19538e40df1d8b3622ef095fcfb2028b20048",
+        "records": 105,
+        "valid": true
+      },
+      "task_class": "coordination_trap",
+      "task_id": "causal-v13-coordination_trap-hard-1451724308737059675"
+    }
+  ]
+}

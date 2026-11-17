@@ -1,0 +1,334 @@
+{
+  "payload": {
+    "audit": {
+      "accepted": 45,
+      "attempted": 45,
+      "ledger_head": "08d7eb0f21045979deb39ceda8a02ecde28de7985c257e782d90ef2246f2f95d",
+      "rejected": 0,
+      "scope": "unchanged_causal_v13_generator_only_not_v14_strategy",
+      "summary_path": "collective_runs/CAUSAL_V13_MECHANICAL_AUDIT_20261115_DEV.json",
+      "summary_sha256": "bfe40aa9d9ae84845a22e20b91f0d105d7571e8fcf50c87171f5a5ec54e47816"
+    },
+    "authorization_parent_payload_sha256": "4461763e8eabcc5ffb55641f8099c651867ae8869147276793617d9c4d73de7c",
+    "conditions": [
+      "single_agent",
+      "independent_vote",
+      "independent_synthesizer",
+      "communicating_collective"
+    ],
+    "difficulties": [
+      "easy",
+      "moderate",
+      "hard"
+    ],
+    "execution_authorization": true,
+    "generator_lineage": "causal-1.1-dev",
+    "generator_version": "causal-1.3-dev",
+    "harness": {
+      "compute_plan": {
+        "lower_bound": 25000.0,
+        "mandatory_episode_reserve_tokens": 3200,
+        "max_completion_tokens": 1800,
+        "max_condition_requests": 18,
+        "max_private_reviews": 12,
+        "minimum_completion_tokens": 512,
+        "optional_call_reserve_tokens": 2600,
+        "post_call_safety_margin": 256,
+        "prompt_characters_per_token": 5.0,
+        "prompt_token_overhead": 384,
+        "target_tokens": 27500,
+        "tolerance": 0.09090909090909091,
+        "upper_bound": 30000.0
+      },
+      "compute_plan_parameters": {
+        "mandatory_episode_reserve_tokens": 3200,
+        "max_completion_tokens": 1800,
+        "max_condition_requests": 18,
+        "max_private_reviews": 12,
+        "minimum_completion_tokens": 512,
+        "optional_call_reserve_tokens": 2600,
+        "post_call_safety_margin": 256,
+        "prompt_characters_per_token": 5.0,
+        "prompt_token_overhead": 384,
+        "target_tokens": 27500,
+        "tolerance": 0.09090909090909091
+      },
+      "evidence_allocation": "equal_budget_v13_routing_and_v12_shared_scout_deliberate_coordinate",
+      "max_completion_tokens": 1800,
+      "max_tool_rounds": 2,
+      "model": "openai/gpt-6.1-sol",
+      "primary_metric": "five_class_brier_loss",
+      "reasoning_effort": "medium",
+      "request_timeout_seconds": 300
+    },
+    "manifest_type": "causal_v14_development",
+    "master_seed": "151d081f1f63404ccc18bb5570e02de9e43845fe093cf49e635789fe3829beec",
+    "proposed_campaign_cost_ceiling_usd": 5.0,
+    "protocol_version": "causal-1.4-dev",
+    "public_perspective_charter": [
+      {
+        "instruction": "Identify direct support and the cheapest observation that could falsify it.",
+        "lens_id": "causal_support",
+        "title": "Causal support"
+      },
+      {
+        "instruction": "Track joint, paired, routed, and conditional evidence; reject marginal-only reasoning.",
+        "lens_id": "dependency",
+        "title": "Dependency structure"
+      },
+      {
+        "instruction": "Audit shared sources, calibration, stale proxies, and latent common causes.",
+        "lens_id": "provenance",
+        "title": "Provenance and confounding"
+      },
+      {
+        "instruction": "Challenge the acquisition plan for decoys, duplicated spend, and unaffordable branches.",
+        "lens_id": "resource_adversary",
+        "title": "Resource adversary"
+      }
+    ],
+    "schema": "collective-intelligence-causal-v14-prepared-v1",
+    "scientific_use": "protocol_calibration_only_never_evaluation",
+    "seed_derivation": "uint64_be(SHA256(protocol_version|generator_version|split|task_class|difficulty|task_index|master_seed)[0:8])",
+    "signing": {
+      "algorithm": "Ed25519",
+      "public_key_der_sha256": "4fb6947ba7bbc76dac9b2b0687878e8b3be971b24586007562c2cfef002eaa4b",
+      "public_key_path": "collective_runs/collective-freeze-ed25519-public.pem",
+      "public_key_sha256": "feaff55bcad52df45db44af2efef2f424712fad1a1877d798f195a85027a345d"
+    },
+    "source_sha256": {
+      "CAUSAL_1_4_DEVELOPMENT_DESIGN.md": "265cce743f67d74b6bcef444f399df3b118277f87c926c408d3df00e4e0fec8f",
+      "collective_lab/causal.py": "e377d547adac956ec667ace78ecdb037b0815c22d876206510e6e0bb270bc161",
+      "collective_lab/causal_audit_v13.py": "d730868755d5dd7a32e9de11e4447aa5f8a4c4f88c12343b0a97610d4af05ebc",
+      "collective_lab/causal_generator.py": "dd7d2f85c0996ff1973b65c1c391c169dd5858114c044a3d25db00667c142c79",
+      "collective_lab/causal_generator_v11.py": "8cb1f21bd2a6425f888562fbbe3796c49c68487e0e9159d71f203a976510c86e",
+      "collective_lab/causal_generator_v13.py": "115db0cc5ec226e4fe20dd76a92d70fd4e2ca44c5cc07455a365e47d99991482",
+      "collective_lab/core.py": "533c89098ab856a844069e80cc0a903e34faa01dcfea3ded99024b5d50e3c558",
+      "collective_lab/development_v14.py": "48d7ef68b30c95f76f7bb504bc2e8ce9f4636dc3aef1b67c480af2607875d142",
+      "collective_lab/freeze_v12.py": "92944c727a22e691880a15b0252bf0348abc05bf234f857766c0fc7365d9d243",
+      "collective_lab/freeze_v14.py": "e8c787f25c024f76d37eda00ed82fe91bd1b686f3d29b029dd4f8955c325790b",
+      "collective_lab/ledger.py": "cc12141067019b17a758ca12ab5507c40597f1ce2477a30701b60eae9fa68722",
+      "collective_lab/openrouter.py": "df242811d8101bc57a84a9c796d5ff48412df71f71b3e649f95f2ff6c9f23601",
+      "collective_lab/oracle.py": "291c320a67896601a3a1e67d73d03125c1aa368f0e4cee7190d906253823e6cf",
+      "collective_lab/protocol_v11.py": "2f4cc2a10f8a88b4751ff5152ec32eab69580fa2df398a596b491d87ee870cfa",
+      "collective_lab/protocol_v12.py": "f3f1d8822dbbc83b0b9efd42b95809f28212d2fe33cb9adb7e4f3b38870c8876",
+      "collective_lab/protocol_v13.py": "b1b6f268c64f963372b57539bd86dfad72ff271bf2d6235af89bbb243654e3b6",
+      "collective_lab/protocol_v14.py": "d7a354a3ead2402e5f75c37d6f9c0729470f5ecc827ca852ce4bccd00e7b9aaa",
+      "collective_lab/runner.py": "441e395d3bf535ab344a586f0992a078bf3925a7c52ee1cabaae647750658445",
+      "collective_lab/runner_v11.py": "0149bd4d25f48f6a1c6d4ea0af3507035099c31e605bd957f5e6df9f3e1c942c",
+      "collective_lab/runner_v12.py": "4b02fe37f896c7bf784bd803674c41c7401214a061b566249aeedca1cc09b7ae",
+      "collective_lab/runner_v13.py": "74456028f6cb7f611fe9e1c33bc37fd19538a75fc15ec26f371c4077e1e67a78",
+      "collective_lab/runner_v14.py": "56833d0949c793841bc5924faee013a15f03b0e12974d86d75df943c67025651",
+      "pyproject.toml": "1a10fbc4347e2bf339497b5d7e2f4e7771bf9809ac0071de408d2c6279fefedf",
+      "tests/test_causal_v14.py": "72ae2f71c4069b05f64d99f8d1ca21c1e5152c9a304f328636b6f2a9ab0a9fff"
+    },
+    "status": "sealed_development_authorized",
+    "strategy": {
+      "coordinator_receives_scout_report": true,
+      "evidence_discipline": "Treat other agents' proposals and confidence as hypotheses, not observations. For relational evidence, resolve routing and polarity before combining channels; list unresolved dependencies instead of intersecting marginal candidate sets. Before changing a diagnosis, identify the purchased evidence and causal relation that warrants the change. Retain uncertainty when that relation is unresolved. Return compact JSON; keep the rationale to at most three sentences.",
+      "preserve_future_episode_reserves": true,
+      "report_recovery_attempts": 1
+    },
+    "task_classes": [
+      "additive",
+      "relational",
+      "coordination_trap"
+    ],
+    "task_count": 9,
+    "tasks": [
+      {
+        "acquisition_lane_count": 0,
+        "acquisition_lanes_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "causal_fingerprint": "1c99310ff9ed00352d54a456862fbaa4c5f6a190b4e9195889558612f4ee6e35",
+        "difficulty": "easy",
+        "evidence_budget": 5,
+        "faithful_regime_probability": 0.8260869565217391,
+        "minimum_path_costs": [
+          1,
+          1,
+          1
+        ],
+        "public_fingerprint": "a2d6896277f224f1c7ac6800017f36bef4edbbb48ea3509eb49778b8cc28c1e5",
+        "seed": 3879206773749297580,
+        "sufficiency_threshold": 0.75,
+        "task_class": "additive",
+        "task_index": 0,
+        "topology_router": null
+      },
+      {
+        "acquisition_lane_count": 3,
+        "acquisition_lanes_sha256": "2055fe7e812eeb6f91410d8374e73984d0950693983e02369b416f65ffeb6790",
+        "causal_fingerprint": "06afbe639ee4d273a3a02d6d00d690466ec7ef81200c7a75b23ccabe9daa7558",
+        "difficulty": "moderate",
+        "evidence_budget": 11,
+        "faithful_regime_probability": 0.6363636363636364,
+        "minimum_path_costs": [
+          1,
+          3,
+          3,
+          3
+        ],
+        "public_fingerprint": "983904deec3476a4f5e594c479f344e201306b3aeee83e53dcd3b1eda2f046bf",
+        "seed": 3860837050948073932,
+        "sufficiency_threshold": 0.55,
+        "task_class": "additive",
+        "task_index": 1,
+        "topology_router": "E06"
+      },
+      {
+        "acquisition_lane_count": 4,
+        "acquisition_lanes_sha256": "d8dc53e29ce0c40d1bd91baf75e4bf30941ec5480f8eb50f3d8fc6096c969a65",
+        "causal_fingerprint": "5701aee4792f16fa802f1f0b446d4af8fc409f02fde3c930fe785bffe77a18d2",
+        "difficulty": "hard",
+        "evidence_budget": 28,
+        "faithful_regime_probability": 0.5555555555555556,
+        "minimum_path_costs": [
+          1,
+          8,
+          8,
+          1,
+          8
+        ],
+        "public_fingerprint": "81ad7d4e0a12a7cc3729f7abd1ea6a2398d75ad85d72be563209f4876f36c3e7",
+        "seed": 15347797767145804119,
+        "sufficiency_threshold": 0.48,
+        "task_class": "additive",
+        "task_index": 2,
+        "topology_router": "E13"
+      },
+      {
+        "acquisition_lane_count": 0,
+        "acquisition_lanes_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "causal_fingerprint": "96d06b7c7d518b68bfdf6f550892b1914fec0fabea343e1610384a879c80619f",
+        "difficulty": "easy",
+        "evidence_budget": 8,
+        "faithful_regime_probability": 0.8260869565217391,
+        "minimum_path_costs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "public_fingerprint": "95fef1086efb45844c77033743b57f6d0e8b1cc87226d3fe3e739706ffece5b5",
+        "seed": 14561053218862000963,
+        "sufficiency_threshold": 0.75,
+        "task_class": "relational",
+        "task_index": 3,
+        "topology_router": null
+      },
+      {
+        "acquisition_lane_count": 6,
+        "acquisition_lanes_sha256": "0d46ceaf367e664bf0c1c3d9906eb904c2379409cc71a9115758b1f946dabc39",
+        "causal_fingerprint": "d0083af5bbd5a167d24c5bf14b1706fa31094ff93d2c77e9f6fef12c12b087ab",
+        "difficulty": "moderate",
+        "evidence_budget": 20,
+        "faithful_regime_probability": 0.6363636363636364,
+        "minimum_path_costs": [
+          1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "public_fingerprint": "fc17dc8dc8666b0e14f1621bf31241685143e4ccb4c8b2cf091660031d915020",
+        "seed": 12391905942884580868,
+        "sufficiency_threshold": 0.55,
+        "task_class": "relational",
+        "task_index": 4,
+        "topology_router": "E05"
+      },
+      {
+        "acquisition_lane_count": 7,
+        "acquisition_lanes_sha256": "3c8ee010fc684d958aaab112d2804ca475784ae36fb2ac75276a508ce53f5c97",
+        "causal_fingerprint": "6aae29736755935f52af761c107b32218f8bca97f38cb32f0760055543f2d3fa",
+        "difficulty": "hard",
+        "evidence_budget": 52,
+        "faithful_regime_probability": 0.5555555555555556,
+        "minimum_path_costs": [
+          1,
+          8,
+          8,
+          8,
+          8,
+          8,
+          1,
+          8
+        ],
+        "public_fingerprint": "cdce5296499e31198db91148242a3ac48f3a63fde3b93f756ac3f134260ecd86",
+        "seed": 9023572141136782737,
+        "sufficiency_threshold": 0.48,
+        "task_class": "relational",
+        "task_index": 5,
+        "topology_router": "E12"
+      },
+      {
+        "acquisition_lane_count": 0,
+        "acquisition_lanes_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "causal_fingerprint": "b5e95afb08f87727df997bb1fb2c471d2dc965c95fc38bf901d59d9273011db8",
+        "difficulty": "easy",
+        "evidence_budget": 6,
+        "faithful_regime_probability": 0.8260869565217391,
+        "minimum_path_costs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "public_fingerprint": "0442b85f153bbdb8f0bc999185fb62b62fdc79013ae384b35120d3ed3d20bbdd",
+        "seed": 10812831048998146760,
+        "sufficiency_threshold": 0.75,
+        "task_class": "coordination_trap",
+        "task_index": 6,
+        "topology_router": null
+      },
+      {
+        "acquisition_lane_count": 4,
+        "acquisition_lanes_sha256": "488ab692022ebb1d0acb27b04efb868d6d9a7285b90ba85ac3e4a5b1053e4d39",
+        "causal_fingerprint": "dca2169e78f1596ff28f4f1010c45eba179bdb5597cf115ed9bbcb95a07e6ac5",
+        "difficulty": "moderate",
+        "evidence_budget": 14,
+        "faithful_regime_probability": 0.6363636363636364,
+        "minimum_path_costs": [
+          1,
+          3,
+          3,
+          3,
+          3
+        ],
+        "public_fingerprint": "0c0387ef7ed36d09ef1bc252181fe23fc4990bfdeee64a832ebc33dc7fe4506a",
+        "seed": 17276661088623091949,
+        "sufficiency_threshold": 0.55,
+        "task_class": "coordination_trap",
+        "task_index": 7,
+        "topology_router": "E08"
+      },
+      {
+        "acquisition_lane_count": 5,
+        "acquisition_lanes_sha256": "321a013261678ec4d156924742066ac232bbeda22256f309bb9e9c647ea77389",
+        "causal_fingerprint": "3d11159bb7dc1483c9e8c664b53d118c2ac56f9c3e55143fdd9e5e0ebd1b8ba7",
+        "difficulty": "hard",
+        "evidence_budget": 21,
+        "faithful_regime_probability": 0.5555555555555556,
+        "minimum_path_costs": [
+          1,
+          3,
+          3,
+          3,
+          1,
+          8
+        ],
+        "public_fingerprint": "d2262af66eb1ebd829da73b50a4821a05a75829350c62ef84599d733e2b87ef8",
+        "seed": 1451724308737059675,
+        "sufficiency_threshold": 0.48,
+        "task_class": "coordination_trap",
+        "task_index": 8,
+        "topology_router": "E01"
+      }
+    ]
+  },
+  "payload_sha256": "67a4fcb1444320b001738692151de634f2a49c553426155e8e002cd0a3a0da91"
+}
