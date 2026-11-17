@@ -1,0 +1,56 @@
+{
+  "accepted": 18,
+  "attempted": 18,
+  "cells_attempted": 9,
+  "cells_passed": 9,
+  "class_structure_checks": {
+    "seed_700_easy_distinct_clue_signatures": true,
+    "seed_700_easy_distinct_fingerprints": true,
+    "seed_700_hard_distinct_clue_signatures": true,
+    "seed_700_hard_distinct_fingerprints": true,
+    "seed_700_moderate_distinct_clue_signatures": true,
+    "seed_700_moderate_distinct_fingerprints": true,
+    "seed_701_easy_distinct_clue_signatures": true,
+    "seed_701_easy_distinct_fingerprints": true,
+    "seed_701_hard_distinct_clue_signatures": true,
+    "seed_701_hard_distinct_fingerprints": true,
+    "seed_701_moderate_distinct_clue_signatures": true,
+    "seed_701_moderate_distinct_fingerprints": true
+  },
+  "difficulty_band_checks": {
+    "seed_700_additive_path_cost_ordered": true,
+    "seed_700_additive_posterior_ordered": true,
+    "seed_700_additive_reserve_tightens": true,
+    "seed_700_coordination_trap_path_cost_ordered": true,
+    "seed_700_coordination_trap_posterior_ordered": true,
+    "seed_700_coordination_trap_reserve_tightens": true,
+    "seed_700_relational_path_cost_ordered": true,
+    "seed_700_relational_posterior_ordered": true,
+    "seed_700_relational_reserve_tightens": true,
+    "seed_701_additive_path_cost_ordered": true,
+    "seed_701_additive_posterior_ordered": true,
+    "seed_701_additive_reserve_tightens": true,
+    "seed_701_coordination_trap_path_cost_ordered": true,
+    "seed_701_coordination_trap_posterior_ordered": true,
+    "seed_701_coordination_trap_reserve_tightens": true,
+    "seed_701_relational_path_cost_ordered": true,
+    "seed_701_relational_posterior_ordered": true,
+    "seed_701_relational_reserve_tightens": true
+  },
+  "failures": [],
+  "generator_version": "causal-1.5-dev",
+  "ledger_head": "ff647905eb19b8ab42a59a0ab643e5da897bbba11daee66ee4dca91fd1a68f1a",
+  "ledger_records": 20,
+  "passed": true,
+  "perspective_checks": {
+    "charter_is_public_and_complete": true,
+    "four_unique_lenses": true,
+    "no_task_private_metadata_in_charter": true
+  },
+  "protocol_version": "causal-1.5-dev",
+  "rejected": 0,
+  "seeds": [
+    700,
+    701
+  ]
+}
