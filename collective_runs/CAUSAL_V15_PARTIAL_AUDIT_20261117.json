@@ -1,0 +1,139 @@
+{
+  "allocation_usd": "5.00",
+  "analysis_date": "2026-11-17",
+  "campaign_verification": {
+    "head": "3e45acce489a6f60b3f564e09a55eebc9939cd3c75fcf569a3a7de44fd8ef17f",
+    "records": 20,
+    "valid": true
+  },
+  "completed_ledger_coverage_matches_campaign": true,
+  "completed_tasks": 7,
+  "confirmed_provider_cost_usd": "2.4916009",
+  "evaluation_authorized": false,
+  "evaluation_seed_generated": false,
+  "gate_6": {
+    "best_possible_total": 4,
+    "reachable": false,
+    "remaining_tasks": 2,
+    "required_minimum": 6,
+    "strict_wins_against_both": 2
+  },
+  "paid_retry_started": false,
+  "partial_tasks": 1,
+  "remaining_allocation_before_unknown_charge_usd": "2.5083991",
+  "reported_completed_cost_usd": "2.3167474",
+  "reported_partial_cost_usd": "0.1748535",
+  "status": "incomplete_campaign_promotion_unreachable",
+  "tasks": [
+    {
+      "complete": true,
+      "compute_plan_matches_manifest": true,
+      "failure": null,
+      "fingerprint_matches_manifest": true,
+      "ledger": "collective_runs/development-v15-20261117/task-00-additive-easy-7763393775519727442.jsonl",
+      "reported_cost_usd": "0.3376103",
+      "verification": {
+        "head": "e3e29f41d495e0b00701b0073e01a4d49608416e5df2856fd531aadc5499df47",
+        "records": 157,
+        "valid": true
+      }
+    },
+    {
+      "complete": true,
+      "compute_plan_matches_manifest": true,
+      "failure": null,
+      "fingerprint_matches_manifest": true,
+      "ledger": "collective_runs/development-v15-20261117/task-01-additive-moderate-6914384110242903315.jsonl",
+      "reported_cost_usd": "0.3114219",
+      "verification": {
+        "head": "bd43df8c81b07019dd1e6fc2238b2272305c5af51796065116153c803c6b607b",
+        "records": 146,
+        "valid": true
+      }
+    },
+    {
+      "complete": true,
+      "compute_plan_matches_manifest": true,
+      "failure": null,
+      "fingerprint_matches_manifest": true,
+      "ledger": "collective_runs/development-v15-20261117/task-02-additive-hard-745641299517801435.jsonl",
+      "reported_cost_usd": "0.3347320",
+      "verification": {
+        "head": "6075f81a24121f49522dae42615ea92ff746fad70dc7cde58e55a084f5469987",
+        "records": 164,
+        "valid": true
+      }
+    },
+    {
+      "complete": true,
+      "compute_plan_matches_manifest": true,
+      "failure": null,
+      "fingerprint_matches_manifest": true,
+      "ledger": "collective_runs/development-v15-20261117/task-03-relational-easy-15781099043502182711.jsonl",
+      "reported_cost_usd": "0.3444268",
+      "verification": {
+        "head": "04b32c81292f99077efe6138f63288784932b95dac243df82fe34603832eef04",
+        "records": 165,
+        "valid": true
+      }
+    },
+    {
+      "complete": true,
+      "compute_plan_matches_manifest": true,
+      "failure": null,
+      "fingerprint_matches_manifest": true,
+      "ledger": "collective_runs/development-v15-20261117/task-04-relational-moderate-2561490524838691948.jsonl",
+      "reported_cost_usd": "0.3107539",
+      "verification": {
+        "head": "0c2ebc5e5d239a63fe7f30ed1fc8980df46faa4fd1a03c4676e756f7414355ef",
+        "records": 143,
+        "valid": true
+      }
+    },
+    {
+      "complete": true,
+      "compute_plan_matches_manifest": true,
+      "failure": null,
+      "fingerprint_matches_manifest": true,
+      "ledger": "collective_runs/development-v15-20261117/task-05-relational-hard-8674604660674032117.jsonl",
+      "reported_cost_usd": "0.3278866",
+      "verification": {
+        "head": "740b3503cb2e3660c35269bbd8f4ce759ea8379df7e2c2865bb00ace7ba6d42a",
+        "records": 151,
+        "valid": true
+      }
+    },
+    {
+      "complete": true,
+      "compute_plan_matches_manifest": true,
+      "failure": null,
+      "fingerprint_matches_manifest": true,
+      "ledger": "collective_runs/development-v15-20261117/task-06-coordination_trap-easy-3596039620925051214.jsonl",
+      "reported_cost_usd": "0.3499159",
+      "verification": {
+        "head": "185ae09469c288870bf0c070636f78bede90e83fc2cc471af7e6500261c7fb07",
+        "records": 167,
+        "valid": true
+      }
+    },
+    {
+      "complete": false,
+      "compute_plan_matches_manifest": true,
+      "failure": {
+        "error": "The read operation timed out",
+        "error_type": "TimeoutError",
+        "kind": "run_failed"
+      },
+      "fingerprint_matches_manifest": true,
+      "ledger": "collective_runs/development-v15-20261117/task-07-coordination_trap-moderate-6239464546949975388.jsonl",
+      "reported_cost_usd": "0.1748535",
+      "verification": {
+        "head": "6fc1c4b3b1e29acb46225b6424426014f1188d3d335e052696a8b1b1304b8528",
+        "records": 85,
+        "valid": true
+      }
+    }
+  ],
+  "unreturned_request_billing": "unknown_one_timed_out_request_no_response_id",
+  "unstarted_tasks": 1
+}
