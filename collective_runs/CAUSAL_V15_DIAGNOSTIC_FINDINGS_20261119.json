@@ -1,0 +1,122 @@
+{
+  "analysis_date": "2026-11-19",
+  "comparisons": [
+    {
+      "both_have_planned_route": true,
+      "collective_diagnosis_tied": false,
+      "collective_expected_brier_under_same_oracle": 0.31206956521739126,
+      "collective_improvement": -0.022399999999999975,
+      "collective_true_probability": 0.8,
+      "difficulty": "easy",
+      "oracle_expected_brier_for_collective_evidence": 0.3100189035916824,
+      "oracle_true_probability_for_collective_evidence": 0.8260869565217391,
+      "single_true_probability": 0.85,
+      "task_class": "additive",
+      "true_world_faithful": true
+    },
+    {
+      "both_have_planned_route": true,
+      "collective_diagnosis_tied": false,
+      "collective_expected_brier_under_same_oracle": 0.5966545454545455,
+      "collective_improvement": -0.017999999999999967,
+      "collective_true_probability": 0.8,
+      "difficulty": "moderate",
+      "oracle_expected_brier_for_collective_evidence": 0.5619834710743801,
+      "oracle_true_probability_for_collective_evidence": 0.6363636363636364,
+      "single_true_probability": 0.84,
+      "task_class": "additive",
+      "true_world_faithful": true
+    },
+    {
+      "both_have_planned_route": true,
+      "collective_diagnosis_tied": false,
+      "collective_expected_brier_under_same_oracle": 0.7178666666666667,
+      "collective_improvement": -0.022399999999999975,
+      "collective_true_probability": 0.8,
+      "difficulty": "hard",
+      "oracle_expected_brier_for_collective_evidence": 0.6419753086419753,
+      "oracle_true_probability_for_collective_evidence": 0.5555555555555556,
+      "single_true_probability": 0.85,
+      "task_class": "additive",
+      "true_world_faithful": true
+    },
+    {
+      "both_have_planned_route": false,
+      "collective_diagnosis_tied": true,
+      "collective_expected_brier_under_same_oracle": 0.7184782608695651,
+      "collective_improvement": -0.6625,
+      "collective_true_probability": 0.3,
+      "difficulty": "easy",
+      "oracle_expected_brier_for_collective_evidence": 0.718336483931947,
+      "oracle_true_probability_for_collective_evidence": 0.30434782608695654,
+      "single_true_probability": 0.9,
+      "task_class": "relational",
+      "true_world_faithful": true
+    },
+    {
+      "both_have_planned_route": false,
+      "collective_diagnosis_tied": false,
+      "collective_expected_brier_under_same_oracle": 0.5966545454545455,
+      "collective_improvement": 0.7488000000000001,
+      "collective_true_probability": 0.8,
+      "difficulty": "moderate",
+      "oracle_expected_brier_for_collective_evidence": 0.5619834710743801,
+      "oracle_true_probability_for_collective_evidence": 0.6363636363636364,
+      "single_true_probability": 0.2,
+      "task_class": "relational",
+      "true_world_faithful": true
+    },
+    {
+      "both_have_planned_route": true,
+      "collective_diagnosis_tied": false,
+      "collective_expected_brier_under_same_oracle": 0.7178666666666667,
+      "collective_improvement": -0.029399999999999978,
+      "collective_true_probability": 0.8,
+      "difficulty": "hard",
+      "oracle_expected_brier_for_collective_evidence": 0.6419753086419753,
+      "oracle_true_probability_for_collective_evidence": 0.5555555555555556,
+      "single_true_probability": 0.87,
+      "task_class": "relational",
+      "true_world_faithful": true
+    },
+    {
+      "both_have_planned_route": false,
+      "collective_diagnosis_tied": false,
+      "collective_expected_brier_under_same_oracle": 0.3168478260869565,
+      "collective_improvement": 0.7875000000000002,
+      "collective_true_probability": 0.9,
+      "difficulty": "easy",
+      "oracle_expected_brier_for_collective_evidence": 0.3100189035916824,
+      "oracle_true_probability_for_collective_evidence": 0.8260869565217391,
+      "single_true_probability": 0.2,
+      "task_class": "coordination_trap",
+      "true_world_faithful": true
+    }
+  ],
+  "evaluation_locked": true,
+  "faithful_true_worlds": 7,
+  "full_route_comparisons": 4,
+  "full_route_total_collective_improvement": -0.0921999999999999,
+  "historical_sources_match": true,
+  "new_model_spend_usd": 0,
+  "other_total_collective_improvement": 0.8738000000000004,
+  "routed_independent_episodes": 36,
+  "unable_to_afford_one_active_nonrouting_item_after_registry": 17,
+  "uniform_oracle_after_actual_independent_acquisitions": 35,
+  "verified_manifests": {
+    "FROZEN_DEVELOPMENT_MANIFEST_CAUSAL_1_5_AUTHORIZED.json": {
+      "generator_version": "causal-1.5-dev",
+      "manifest_type": "causal_v15_development",
+      "payload_sha256": "bbf9adaae6291cd8c961de6a73444c33a3d6b58a1b80fe2cf5f2b17f8f009140",
+      "signing_key_fingerprint": "4fb6947ba7bbc76dac9b2b0687878e8b3be971b24586007562c2cfef002eaa4b",
+      "valid": true
+    },
+    "FROZEN_EVALUATION_CONFIGURATION_CAUSAL_1_5_PREPARED.json": {
+      "generator_version": "causal-1.5-dev",
+      "manifest_type": "causal_v15_evaluation_configuration",
+      "payload_sha256": "948b8b2bfbd142314c535720e846015244630faa05358a865208c153e30e991e",
+      "signing_key_fingerprint": "4fb6947ba7bbc76dac9b2b0687878e8b3be971b24586007562c2cfef002eaa4b",
+      "valid": true
+    }
+  }
+}
