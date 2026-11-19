@@ -1,0 +1,2 @@
+# Separate analysis environment; do not change the frozen pilot environment.
+scipy==1.11.4

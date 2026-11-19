@@ -1,0 +1,78 @@
+{
+  "payload": {
+    "automatic_promotion": false,
+    "cell_weights": "equal_1_over_9",
+    "confidence": 0.95,
+    "evaluation_master_seed": null,
+    "evaluation_seed_generation_allowed": false,
+    "execution_authorized": false,
+    "final_sample_size": null,
+    "interval": "stratified_paired_t_with_welch_satterthwaite_df",
+    "pilot_plan_sha256": "4a8868937b929750cb436a5bd3f0fa08dfbf913753252f39559809d56a0fa777",
+    "planning_power_target": 0.8,
+    "practical_effect_target": 0.05,
+    "precision_half_width_target": 0.05,
+    "precision_scenarios": [
+      {
+        "approximate_half_width": 0.035783882874343136,
+        "approximate_power": 0.7819079987319799,
+        "automatic_sample_size_approval": false,
+        "balanced_n_to_review": 36,
+        "n": 30,
+        "normal_approximation_n_for_power": 32,
+        "normal_approximation_n_for_precision": 16,
+        "paired_sd": 0.1
+      },
+      {
+        "approximate_half_width": 0.07156776574868627,
+        "approximate_power": 0.27781030356752967,
+        "automatic_sample_size_approval": false,
+        "balanced_n_to_review": 126,
+        "n": 30,
+        "normal_approximation_n_for_power": 126,
+        "normal_approximation_n_for_precision": 62,
+        "paired_sd": 0.2
+      },
+      {
+        "approximate_half_width": 0.1073516486230294,
+        "approximate_power": 0.14956236414516266,
+        "automatic_sample_size_approval": false,
+        "balanced_n_to_review": 288,
+        "n": 30,
+        "normal_approximation_n_for_power": 283,
+        "normal_approximation_n_for_precision": 139,
+        "paired_sd": 0.3
+      },
+      {
+        "approximate_half_width": 0.17891941437171566,
+        "approximate_power": 0.08501566405983702,
+        "automatic_sample_size_approval": false,
+        "balanced_n_to_review": 792,
+        "n": 30,
+        "normal_approximation_n_for_power": 785,
+        "normal_approximation_n_for_precision": 385,
+        "paired_sd": 0.5
+      }
+    ],
+    "primary_difference": "independent_synthesizer_minus_communicating_collective",
+    "primary_metric": "realized_multiclass_brier",
+    "proposed_sample_size": 30,
+    "release_requirements": [
+      "complete_pilot_review",
+      "variance_sensitivity",
+      "synthetic_coverage_power_check",
+      "signed_fixed_sample_size_and_analysis",
+      "explicit_evaluation_dollar_ceiling"
+    ],
+    "schema": "causal-v16-evaluation-analysis-prepared-v1",
+    "sensitivity_interval": "independent_bounded_task_hoeffding",
+    "source_sha256": {
+      "CAUSAL_1_6_EVALUATION_ANALYSIS_PLAN.md": "a1ad32782b6040cb75a67c55a39736f80bfa6bbc581c4c7f7c6c603de2b99dff",
+      "collective_lab/precision_v16.py": "36fd060c4a701dd2d5f3d58cb81df364137b52855e06b6fe86636b61a4c1be8d",
+      "requirements-evaluation-v16.txt": "805fc874881dcdbf42e9e3ec2ea8d538bb19f1c46d5ee673df8469fe0c6c91b0",
+      "tests/test_precision_v16.py": "5da95f17c82752bd030ba080c346d710a4d3ad96bfb446edfe7c85a96d49c52a"
+    },
+    "tasks": null
+  },
+  "payload_sha256": "9b227f265b0f184ae61b4ddde4aa0221d7d5e428e0dc0fc10e2af674ebe75d0d"
+}

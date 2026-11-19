@@ -1,0 +1,53 @@
+{
+  "analysis_environment": {
+    "python": "system python3",
+    "scipy": "1.11.4"
+  },
+  "draft_ceiling_usd": "5",
+  "evaluation_seed_generation_allowed": false,
+  "evaluation_seeds": null,
+  "offline_full_campaign_conditions": 54,
+  "offline_full_campaign_mock_requests": 207,
+  "paid_model_requests": 0,
+  "pilot_execution_authorized": false,
+  "pilot_started": false,
+  "targeted_tests_passed": 40,
+  "test_command": "python3 -m unittest tests.test_pilot_v16 tests.test_precision_v16 tests.test_causal_v16 -q",
+  "verified_documents": [
+    {
+      "file": "CAUSAL_V16_EVALUATION_ANALYSIS_PREPARED_20261119.json",
+      "signature_valid": true,
+      "source_hashes_match": true
+    },
+    {
+      "file": "CAUSAL_V16_PILOT_PLAN_20261119.json",
+      "signature_valid": true,
+      "source_hashes_match": true
+    },
+    {
+      "file": "FROZEN_DEVELOPMENT_MANIFEST_CAUSAL_1_5_AUTHORIZED.json",
+      "signature_valid": true,
+      "source_hashes_match": true
+    },
+    {
+      "file": "FROZEN_DEVELOPMENT_MANIFEST_CAUSAL_1_5_PREPARED.json",
+      "signature_valid": true,
+      "source_hashes_match": true
+    },
+    {
+      "file": "FROZEN_DEVELOPMENT_MANIFEST_CAUSAL_1_6_PREPARED.json",
+      "signature_valid": true,
+      "source_hashes_match": true
+    },
+    {
+      "file": "FROZEN_EVALUATION_CONFIGURATION_CAUSAL_1_5_PREPARED.json",
+      "signature_valid": true,
+      "source_hashes_match": true
+    },
+    {
+      "file": "FROZEN_EVALUATION_CONFIGURATION_CAUSAL_1_6_PREPARED.json",
+      "signature_valid": true,
+      "source_hashes_match": true
+    }
+  ]
+}
