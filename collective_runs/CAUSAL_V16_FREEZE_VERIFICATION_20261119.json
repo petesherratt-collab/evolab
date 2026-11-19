@@ -1,0 +1,36 @@
+{
+  "checks": [
+    {
+      "frozen_sources_match": true,
+      "manifest": "FROZEN_DEVELOPMENT_MANIFEST_CAUSAL_1_5_AUTHORIZED.json",
+      "payload_sha256": "bbf9adaae6291cd8c961de6a73444c33a3d6b58a1b80fe2cf5f2b17f8f009140",
+      "signature_valid": true
+    },
+    {
+      "frozen_sources_match": true,
+      "manifest": "FROZEN_DEVELOPMENT_MANIFEST_CAUSAL_1_5_PREPARED.json",
+      "payload_sha256": "4415e873b159cef3b56ca2c827f7c0212035faafbe424e4378477a969773de41",
+      "signature_valid": true
+    },
+    {
+      "frozen_sources_match": true,
+      "manifest": "FROZEN_DEVELOPMENT_MANIFEST_CAUSAL_1_6_PREPARED.json",
+      "payload_sha256": "e7ed23c42b697527c1761480792adeff14b86c754d9540da17d33465a029aade",
+      "signature_valid": true
+    },
+    {
+      "frozen_sources_match": true,
+      "manifest": "FROZEN_EVALUATION_CONFIGURATION_CAUSAL_1_5_PREPARED.json",
+      "payload_sha256": "948b8b2bfbd142314c535720e846015244630faa05358a865208c153e30e991e",
+      "signature_valid": true
+    },
+    {
+      "frozen_sources_match": true,
+      "manifest": "FROZEN_EVALUATION_CONFIGURATION_CAUSAL_1_6_PREPARED.json",
+      "payload_sha256": "f693b113dbef4eade51d5cc754e7a7b5a81896222918bb6463c7cf56b7dfc149",
+      "signature_valid": true
+    }
+  ],
+  "paid_requests": 0,
+  "v16_evaluation_seedless": true
+}
