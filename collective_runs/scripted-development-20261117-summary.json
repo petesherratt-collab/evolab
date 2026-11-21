@@ -1,0 +1,401 @@
+{
+ "manifest_payload_sha256": "4a613bbcd4f7df3e21ae762f6b31df2d10d912dfdd2691eee49afef9041645ca",
+ "tasks": [
+  {
+   "difficulty": "easy",
+   "ledger": "task-00-additive-easy-scripted.jsonl",
+   "minimum_sufficient_cost": 3,
+   "models": {
+    "communicating_collective": {
+     "accurate": true,
+     "brier": 0.0002940000000000004,
+     "cost": 0.049112100000000006,
+     "evidence_spent": 28,
+     "tokens": 27375.0
+    },
+    "independent_synthesizer": {
+     "accurate": true,
+     "brier": 0.0011980000000000016,
+     "cost": 0.0480886,
+     "evidence_spent": 28,
+     "tokens": 23662.0
+    },
+    "independent_vote": {
+     "accurate": true,
+     "brier": 0.0018213750000000068,
+     "cost": 0.0477436,
+     "evidence_spent": 26,
+     "tokens": 23242.0
+    },
+    "single_agent": {
+     "accurate": true,
+     "brier": 0.0034140000000000047,
+     "cost": 0.0839863,
+     "evidence_spent": 8,
+     "tokens": 24187.0
+    }
+   },
+   "scripted": {
+    "accurate": true,
+    "api_requests": 2,
+    "brier": 0.0,
+    "evidence_spent": 3,
+    "tokens": 0.0
+   },
+   "task_class": "additive",
+   "task_index": 0
+  },
+  {
+   "difficulty": "moderate",
+   "ledger": "task-01-additive-moderate-scripted.jsonl",
+   "minimum_sufficient_cost": 9,
+   "models": {
+    "communicating_collective": {
+     "accurate": true,
+     "brier": 0.0008180000000000011,
+     "cost": 0.0488816,
+     "evidence_spent": 53,
+     "tokens": 24017.0
+    },
+    "independent_synthesizer": {
+     "accurate": true,
+     "brier": 0.014117999999999995,
+     "cost": 0.07008560000000001,
+     "evidence_spent": 44,
+     "tokens": 24002.0
+    },
+    "independent_vote": {
+     "accurate": true,
+     "brier": 0.008228125000000003,
+     "cost": 0.05568640000000001,
+     "evidence_spent": 84,
+     "tokens": 23242.0
+    },
+    "single_agent": {
+     "accurate": true,
+     "brier": 0.004896000000000006,
+     "cost": 0.0774418,
+     "evidence_spent": 49,
+     "tokens": 23617.0
+    }
+   },
+   "scripted": {
+    "accurate": true,
+    "api_requests": 2,
+    "brier": 0.0,
+    "evidence_spent": 9,
+    "tokens": 0.0
+   },
+   "task_class": "additive",
+   "task_index": 1
+  },
+  {
+   "difficulty": "hard",
+   "ledger": "task-02-additive-hard-scripted.jsonl",
+   "minimum_sufficient_cost": 24,
+   "models": {
+    "communicating_collective": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.05867209999999999,
+     "evidence_spent": 76,
+     "tokens": 23849.0
+    },
+    "independent_synthesizer": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.0581482,
+     "evidence_spent": 76,
+     "tokens": 23149.0
+    },
+    "independent_vote": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.06792519999999999,
+     "evidence_spent": 96,
+     "tokens": 22696.0
+    },
+    "single_agent": {
+     "accurate": true,
+     "brier": 0.029400000000000006,
+     "cost": 0.0834493,
+     "evidence_spent": 64,
+     "tokens": 24367.0
+    }
+   },
+   "scripted": {
+    "accurate": true,
+    "api_requests": 2,
+    "brier": 0.0,
+    "evidence_spent": 24,
+    "tokens": 0.0
+   },
+   "task_class": "additive",
+   "task_index": 2
+  },
+  {
+   "difficulty": "easy",
+   "ledger": "task-03-relational-easy-scripted.jsonl",
+   "minimum_sufficient_cost": 6,
+   "models": {
+    "communicating_collective": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.0551467,
+     "evidence_spent": 24,
+     "tokens": 24424.0
+    },
+    "independent_synthesizer": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.052807200000000006,
+     "evidence_spent": 24,
+     "tokens": 23295.0
+    },
+    "independent_vote": {
+     "accurate": true,
+     "brier": 2.100000000000003e-05,
+     "cost": 0.031205599999999997,
+     "evidence_spent": 72,
+     "tokens": 22637.0
+    },
+    "single_agent": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.07792890000000001,
+     "evidence_spent": 22,
+     "tokens": 23871.0
+    }
+   },
+   "scripted": {
+    "accurate": true,
+    "api_requests": 2,
+    "brier": 0.0,
+    "evidence_spent": 6,
+    "tokens": 0.0
+   },
+   "task_class": "relational",
+   "task_index": 3
+  },
+  {
+   "difficulty": "moderate",
+   "ledger": "task-04-relational-moderate-scripted.jsonl",
+   "minimum_sufficient_cost": 18,
+   "models": {
+    "communicating_collective": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.0500544,
+     "evidence_spent": 72,
+     "tokens": 22710.0
+    },
+    "independent_synthesizer": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.0658276,
+     "evidence_spent": 72,
+     "tokens": 23074.0
+    },
+    "independent_vote": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.0694901,
+     "evidence_spent": 72,
+     "tokens": 22979.0
+    },
+    "single_agent": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.08434660000000001,
+     "evidence_spent": 34,
+     "tokens": 24157.0
+    }
+   },
+   "scripted": {
+    "accurate": true,
+    "api_requests": 2,
+    "brier": 0.0,
+    "evidence_spent": 18,
+    "tokens": 0.0
+   },
+   "task_class": "relational",
+   "task_index": 4
+  },
+  {
+   "difficulty": "hard",
+   "ledger": "task-05-relational-hard-scripted.jsonl",
+   "minimum_sufficient_cost": 48,
+   "models": {
+    "communicating_collective": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.0529629,
+     "evidence_spent": 96,
+     "tokens": 29232.0
+    },
+    "independent_synthesizer": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.0424528,
+     "evidence_spent": 96,
+     "tokens": 23368.0
+    },
+    "independent_vote": {
+     "accurate": false,
+     "brier": 0.6113055972222222,
+     "cost": 0.0464512,
+     "evidence_spent": 99,
+     "tokens": 22885.0
+    },
+    "single_agent": {
+     "accurate": true,
+     "brier": 0.0,
+     "cost": 0.0809153,
+     "evidence_spent": 64,
+     "tokens": 22553.0
+    }
+   },
+   "scripted": {
+    "accurate": true,
+    "api_requests": 2,
+    "brier": 0.0,
+    "evidence_spent": 48,
+    "tokens": 0.0
+   },
+   "task_class": "relational",
+   "task_index": 5
+  },
+  {
+   "difficulty": "easy",
+   "ledger": "task-06-coordination_trap-easy-scripted.jsonl",
+   "minimum_sufficient_cost": 4,
+   "models": {
+    "communicating_collective": {
+     "accurate": true,
+     "brier": 0.0005120000000000007,
+     "cost": 0.0465708,
+     "evidence_spent": 33,
+     "tokens": 24585.0
+    },
+    "independent_synthesizer": {
+     "accurate": true,
+     "brier": 0.00012800000000000018,
+     "cost": 0.055341600000000005,
+     "evidence_spent": 28,
+     "tokens": 23196.0
+    },
+    "independent_vote": {
+     "accurate": true,
+     "brier": 0.0011520000000000015,
+     "cost": 0.0704266,
+     "evidence_spent": 28,
+     "tokens": 24013.0
+    },
+    "single_agent": {
+     "accurate": true,
+     "brier": 0.0005420000000000007,
+     "cost": 0.0804847,
+     "evidence_spent": 19,
+     "tokens": 23839.0
+    }
+   },
+   "scripted": {
+    "accurate": true,
+    "api_requests": 2,
+    "brier": 0.0,
+    "evidence_spent": 4,
+    "tokens": 0.0
+   },
+   "task_class": "coordination_trap",
+   "task_index": 6
+  },
+  {
+   "difficulty": "moderate",
+   "ledger": "task-07-coordination_trap-moderate-scripted.jsonl",
+   "minimum_sufficient_cost": 12,
+   "models": {
+    "communicating_collective": {
+     "accurate": true,
+     "brier": 0.002048000000000003,
+     "cost": 0.052056000000000005,
+     "evidence_spent": 52,
+     "tokens": 22554.0
+    },
+    "independent_synthesizer": {
+     "accurate": true,
+     "brier": 0.012799999999999995,
+     "cost": 0.06995989999999999,
+     "evidence_spent": 52,
+     "tokens": 22754.0
+    },
+    "independent_vote": {
+     "accurate": true,
+     "brier": 0.0011617500000000015,
+     "cost": 0.0690961,
+     "evidence_spent": 60,
+     "tokens": 22750.0
+    },
+    "single_agent": {
+     "accurate": true,
+     "brier": 0.028800000000000006,
+     "cost": 0.0830293,
+     "evidence_spent": 29,
+     "tokens": 23737.0
+    }
+   },
+   "scripted": {
+    "accurate": true,
+    "api_requests": 2,
+    "brier": 0.0,
+    "evidence_spent": 12,
+    "tokens": 0.0
+   },
+   "task_class": "coordination_trap",
+   "task_index": 7
+  },
+  {
+   "difficulty": "hard",
+   "ledger": "task-08-coordination_trap-hard-scripted.jsonl",
+   "minimum_sufficient_cost": 17,
+   "models": {
+    "communicating_collective": {
+     "accurate": true,
+     "brier": 0.002048000000000003,
+     "cost": 0.04902429999999999,
+     "evidence_spent": 97,
+     "tokens": 24892.0
+    },
+    "independent_synthesizer": {
+     "accurate": true,
+     "brier": 0.0005120000000000007,
+     "cost": 0.0701947,
+     "evidence_spent": 80,
+     "tokens": 24403.0
+    },
+    "independent_vote": {
+     "accurate": true,
+     "brier": 0.0013413749999999982,
+     "cost": 0.0685012,
+     "evidence_spent": 83,
+     "tokens": 22918.0
+    },
+    "single_agent": {
+     "accurate": true,
+     "brier": 0.033200000000000014,
+     "cost": 0.0790881,
+     "evidence_spent": 39,
+     "tokens": 23130.0
+    }
+   },
+   "scripted": {
+    "accurate": true,
+    "api_requests": 2,
+    "brier": 0.0,
+    "evidence_spent": 17,
+    "tokens": 0.0
+   },
+   "task_class": "coordination_trap",
+   "task_index": 8
+  }
+ ]
+}
